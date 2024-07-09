@@ -22,14 +22,6 @@ const items = [
     link: "/singleProduct",
     pathName: "SingleProducts",
   },
-  // {
-  //   link: "/cart",
-  //   pathName: "Cart",
-  // },
-  // {
-  //   link: "/checkout",
-  //   pathName: "Checkout",
-  // },
 ];
 
 const Topbar = () => {

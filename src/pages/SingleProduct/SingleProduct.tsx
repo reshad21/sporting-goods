@@ -1,8 +1,10 @@
+import Container from "@/components/ui/Container";
+
 const SingleProduct = () => {
   return (
-    <div>
-      <h1>SingleProduct page</h1>
-    </div>
+    <Container>
+      <h1>This is single product page</h1>
+    </Container>
   );
 };
 

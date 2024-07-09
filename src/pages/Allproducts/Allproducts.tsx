@@ -1,8 +1,15 @@
+import Container from "@/components/ui/Container";
+import ProductCard from "@/components/ui/ProductCard";
+
 const Allproducts = () => {
   return (
-    <div>
-      <h1>All products</h1>
-    </div>
+    <Container>
+      <div className="grid grid-cols-3">
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+      </div>
+    </Container>
   );
 };
 

@@ -1,8 +1,10 @@
+import Container from "@/components/ui/Container";
+
 const ManageProduct = () => {
   return (
-    <div>
-      <h1>ManageProduct page</h1>
-    </div>
+    <Container>
+      <h1>This is Manage product page</h1>
+    </Container>
   );
 };
 
