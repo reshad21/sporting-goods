@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../ui/Footer";
-import Header from "../ui/Header";
+import Navber from "../ui/Navber";
 
 const MainLayout = () => {
   return (
     <div className="min-h-screen">
-      <Header />
+      <Navber />
       <Outlet />
       <Footer />
     </div>
