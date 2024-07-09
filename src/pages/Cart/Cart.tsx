@@ -1,7 +1,11 @@
+import Container from "@/components/ui/Container";
+
 const Cart = () => {
   return (
     <div>
-      <h1>this is add to cart</h1>
+      <Container>
+        <h1>this is add to cart</h1>
+      </Container>
     </div>
   );
 };

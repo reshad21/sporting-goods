@@ -13,7 +13,6 @@ const Header = () => {
           </div>
           <div className="flex gap-3 items-center justify-center">
             <div className="flex justify-center items-center">
-              <input placeholder="Basic usage" />
               <Link to="/cart">
                 <>
                   <svg
