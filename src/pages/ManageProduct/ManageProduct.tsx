@@ -8,14 +8,14 @@ const ManageProduct = () => {
       <div className="my-5">
         <AddProductModal />
       </div>
-      <table className="w-full border-collapse border border-slate-400 ...">
+      <table className="w-full border-2 rounded-lg border-slate-400">
         <thead>
           <tr>
-            <th className="border border-slate-300 ...">Title</th>
-            <th className="border border-slate-300 ...">Price</th>
-            <th className="border border-slate-300 ...">Update</th>
-            <th className="border border-slate-300 ...">Delete</th>
-            <th className="border border-slate-300 ...">View</th>
+            <th className="border border-slate-300">Title</th>
+            <th className="border border-slate-300">Price</th>
+            <th className="border border-slate-300">Update</th>
+            <th className="border border-slate-300">Delete</th>
+            <th className="border border-slate-300">View</th>
           </tr>
         </thead>
         <tbody>
