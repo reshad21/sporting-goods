@@ -28,6 +28,14 @@ const ProductCard = () => {
           <span>NIKE</span>
         </div>
         <div className="flex items-center gap-2">
+          <Label>Quantity:</Label>
+          <span>200</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Label>Rating:</Label>
+          <span>5</span>
+        </div>
+        <div className="flex items-center gap-2">
           <Label>PRICE:</Label>
           <span>44$</span>
         </div>

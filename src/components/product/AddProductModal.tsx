@@ -27,6 +27,8 @@ const AddProductModal = () => {
   const [description, setdescription] = useState("");
   const [priority, setPriority] = useState("");
   const [brand, setBrand] = useState("");
+  const [quantity, setQuantity] = useState<number | null>(null);
+  const [rating, setRating] = useState<number | null>(null);
   const [price, setPrice] = useState<number | null>(null);
 
   const handleSubmit = (e: FormEvent) => {
@@ -37,6 +39,8 @@ const AddProductModal = () => {
       description,
       priority,
       brand,
+      quantity,
+      rating,
       price,
     };
     console.log(typeof productData.price);
@@ -121,6 +125,36 @@ const AddProductModal = () => {
                 onBlur={(e) => setBrand(e.target.value)}
                 id="brand"
                 placeholder="Nike"
+                required
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="quantity" className="">
+                Quantity
+              </Label>
+              <Input
+                onBlur={(e) =>
+                  setQuantity(
+                    e.target.value ? parseFloat(e.target.value) : null
+                  )
+                }
+                id="quantity"
+                placeholder=""
+                required
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="rating" className="">
+                Rating
+              </Label>
+              <Input
+                onBlur={(e) =>
+                  setRating(e.target.value ? parseFloat(e.target.value) : null)
+                }
+                id="rating"
+                placeholder=""
                 required
                 className="col-span-3"
               />
