@@ -24,7 +24,6 @@ const ProductCard = ({
   imgurl,
   title,
 }: TProductdata) => {
-  console.log(imgurl);
   return (
     <div className="card bg-base-100 w-full shadow-xl">
       <figure>

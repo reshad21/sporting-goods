@@ -1,8 +1,8 @@
 import { useDeleteProductMutation } from "@/redux/features/Product/productApi";
-import { CiEdit } from "react-icons/ci";
 import { GrView } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import UpdateProductModal from "../product/UpdateProductModal";
 import { Button } from "./button";
 
 type TProduct = {
@@ -33,12 +33,7 @@ const SingleProductRow = ({ title, price, _id, imgurl }: TProduct) => {
       <td className="border border-slate-300 px-3">{price}$</td>
       <td className="border border-slate-300 text-center">
         <Link to="#" className="">
-          <Button className="bg-white hover:text-slate-900">
-            <CiEdit
-              size={20}
-              className="font-bold text-slate-900 hover:text-white"
-            />
-          </Button>
+          <UpdateProductModal />
         </Link>
       </td>
       <td className="border border-slate-300 text-center">
