@@ -5,7 +5,18 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Button } from "./button";
 
-const SingleProductRow = ({ title, price, _id, imgurl }) => {
+type TProduct = {
+  _id: string;
+  title: string;
+  price: number;
+  imgurl: string;
+  rating?: number; // Optional properties
+  quantity?: number; // Optional properties
+  brand?: string; // Optional properties
+  category?: string; // Optional properties
+  description?: string; // Optional properties
+};
+const SingleProductRow = ({ title, price, _id, imgurl }: TProduct) => {
   const [deleteProduct, { isLoading, isError }] = useDeleteProductMutation();
   // const dispatch = useDispatch();
 
@@ -31,20 +42,18 @@ const SingleProductRow = ({ title, price, _id, imgurl }) => {
         </Link>
       </td>
       <td className="border border-slate-300 text-center">
-        <Link to="#" className="">
-          <Button
-            className="bg-white hover:text-slate-900"
-            onClick={() => deleteProduct(_id)}
-          >
-            <MdDelete
-              size={20}
-              className="font-bold text-slate-900 hover:text-white"
-            />
-          </Button>
-        </Link>
+        <Button
+          className="bg-white hover:text-slate-900"
+          onClick={() => deleteProduct(_id)}
+        >
+          <MdDelete
+            size={20}
+            className="font-bold text-slate-900 hover:text-white"
+          />
+        </Button>
       </td>
       <td className="border border-slate-300 text-center">
-        <Link to="/singleProduct" className="">
+        <Link to={`/singleProduct/${_id}`} className="">
           <Button className="bg-white hover:text-slate-900">
             <GrView
               size={20}

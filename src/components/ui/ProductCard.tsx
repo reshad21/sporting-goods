@@ -2,7 +2,17 @@ import { Link } from "react-router-dom";
 import { Button } from "./button";
 import { Label } from "./label";
 
-// import ballImage from "../../assets/Images/ball1.png";
+export type TProductdata = {
+  _id: string;
+  price: number;
+  rating: number;
+  quantity: number;
+  brand: string;
+  category: string;
+  description: string;
+  imgurl: string;
+  title: string;
+};
 const ProductCard = ({
   _id,
   price,
@@ -13,7 +23,7 @@ const ProductCard = ({
   description,
   imgurl,
   title,
-}) => {
+}: TProductdata) => {
   console.log(imgurl);
   return (
     <div className="card bg-base-100 w-full shadow-xl">
@@ -44,7 +54,7 @@ const ProductCard = ({
           <span>{price}$</span>
         </div>
         <div className="card-actions justify-between">
-          <Link to="{`/singleProduct/${id}`}">
+          <Link to={`/singleProduct/${_id}`}>
             <Button className="btn btn-primary btn-sm">View Details</Button>
           </Link>
           <Button className="btn btn-primary btn-sm">Add To Cart</Button>

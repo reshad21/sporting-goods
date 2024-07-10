@@ -1,5 +1,6 @@
 import AddProductModal from "@/components/product/AddProductModal";
 import Container from "@/components/ui/Container";
+import { TProductdata } from "@/components/ui/ProductCard";
 import SingleProductRow from "@/components/ui/SingleProductRow";
 import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
 
@@ -28,7 +29,7 @@ const ManageProduct = () => {
           </tr>
         </thead>
         <tbody>
-          {products?.data?.map((product) => (
+          {products?.data?.map((product: TProductdata) => (
             <SingleProductRow {...product} key={product._id} />
           ))}
         </tbody>
