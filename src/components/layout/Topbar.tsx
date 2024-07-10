@@ -18,10 +18,6 @@ const items = [
     link: "/manageProducts",
     pathName: "ManageProducts",
   },
-  {
-    link: "/singleProduct",
-    pathName: "SingleProducts",
-  },
 ];
 
 const Topbar = () => {

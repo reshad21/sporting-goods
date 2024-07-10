@@ -29,7 +29,7 @@ const SingleProductRow = () => {
         </Link>
       </td>
       <td className="border border-slate-300 text-center">
-        <Link to="#" className="">
+        <Link to="/singleProduct" className="">
           <Button className="bg-white hover:text-slate-900">
             <GrView
               size={20}

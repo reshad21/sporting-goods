@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "./button";
 import { Label } from "./label";
 
@@ -31,7 +32,9 @@ const ProductCard = () => {
           <span>44$</span>
         </div>
         <div className="card-actions justify-between">
-          <Button className="btn btn-primary">View Details</Button>
+          <Link to="{`/singleProduct/${id}`}">
+            <Button className="btn btn-primary">View Details</Button>
+          </Link>
           <Button className="btn btn-primary">Add To Cart</Button>
         </div>
       </div>
