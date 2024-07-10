@@ -3,11 +3,11 @@ import { GrView } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Button } from "./button";
-const SingleProductRow = () => {
+const SingleProductRow = ({ title, price }) => {
   return (
     <tr>
-      <td className="border border-slate-300 px-3">iPhone 12</td>
-      <td className="border border-slate-300 px-3">100$</td>
+      <td className="border border-slate-300 px-3">{title}</td>
+      <td className="border border-slate-300 px-3">{price}$</td>
       <td className="border border-slate-300 text-center">
         <Link to="#" className="">
           <Button className="bg-white hover:text-slate-900">

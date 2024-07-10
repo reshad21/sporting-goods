@@ -1,3 +1,4 @@
+import { useAddProductsMutation } from "@/redux/features/Product/productApi";
 import { FormEvent, useState } from "react";
 import { Button } from "../ui/button";
 import {
@@ -25,11 +26,18 @@ const AddProductModal = () => {
   const [title, setTitle] = useState("");
   const [imgurl, setImgurl] = useState("");
   const [description, setdescription] = useState("");
-  const [priority, setPriority] = useState("");
+  const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
   const [quantity, setQuantity] = useState<number | null>(null);
   const [rating, setRating] = useState<number | null>(null);
   const [price, setPrice] = useState<number | null>(null);
+
+  const [addProduct, { data, isLoading, isError }] = useAddProductsMutation();
+
+  console.log("product=>", data);
+
+  if (isError) return <div>An error has occurred!</div>;
+  if (isLoading) return <div>An error has occurred!</div>;
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -37,14 +45,13 @@ const AddProductModal = () => {
       title,
       imgurl,
       description,
-      priority,
+      category,
       brand,
       quantity,
       rating,
       price,
     };
-    console.log(typeof productData.price);
-    console.log(productData);
+    addProduct(productData);
   };
   return (
     <Dialog>
@@ -98,7 +105,7 @@ const AddProductModal = () => {
               <Label htmlFor="category" className="">
                 Category
               </Label>
-              <Select onValueChange={(value) => setPriority(value)}>
+              <Select onValueChange={(value) => setCategory(value)}>
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Set Category" />
                 </SelectTrigger>

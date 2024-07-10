@@ -2,6 +2,15 @@ import { baseApi } from "../../api/baseApi";
 
 const productApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
+
+        getAllProducts: builder.query({
+            query: () => ({
+                url: '/products',
+                method: 'GET',
+            }),
+            providesTags: ['sports']
+        }),
+
         addProducts: builder.mutation({
             query: (data) => {
                 console.log("inside base api=>", data);
@@ -16,4 +25,4 @@ const productApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useAddProductsMutation } = productApi;
+export const { useAddProductsMutation, useGetAllProductsQuery } = productApi;
