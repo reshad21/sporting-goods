@@ -34,8 +34,7 @@ const UpdateProductModal = () => {
   const [price, setPrice] = useState<number | null>(null);
 
   const [addProduct, { data, isLoading, isError }] = useAddProductsMutation();
-
-  console.log("product=>", data);
+  console.log(data);
 
   if (isError) return <div>An error has occurred!</div>;
   if (isLoading) return <div>An error has occurred!</div>;

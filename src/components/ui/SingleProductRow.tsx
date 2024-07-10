@@ -32,9 +32,7 @@ const SingleProductRow = ({ title, price, _id, imgurl }: TProduct) => {
       </td>
       <td className="border border-slate-300 px-3">{price}$</td>
       <td className="border border-slate-300 text-center">
-        <Link to="#" className="">
-          <UpdateProductModal />
-        </Link>
+        <UpdateProductModal />
       </td>
       <td className="border border-slate-300 text-center">
         <Button
