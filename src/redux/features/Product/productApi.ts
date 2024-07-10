@@ -3,12 +3,32 @@ import { baseApi } from "../../api/baseApi";
 const productApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
+        updateProduct: builder.mutation({
+            query: ({ id, data }) => {
+                console.log("Updating product with id:", id, "and data:", data);
+                return {
+                    url: `/product/${id}`,
+                    method: 'PUT',
+                    body: data,
+                }
+            },
+            invalidatesTags: ['sports']
+        }),
+
         getAllProducts: builder.query({
             query: () => ({
                 url: '/products',
                 method: 'GET',
             }),
             providesTags: ['sports']
+        }),
+
+        getProductById: builder.query({
+            query: (id) => ({
+                url: `/product/${id}`,
+                method: 'GET',
+            }),
+            providesTags: (result, error, id) => [{ type: 'sports', id }]
         }),
 
         addProducts: builder.mutation({
@@ -34,18 +54,8 @@ const productApi = baseApi.injectEndpoints({
             invalidatesTags: ['sports']
         }),
 
-        updateProduct: builder.mutation({
-            query: ({ id, data }) => {
-                console.log("Updating product with id:", id, "and data:", data);
-                return {
-                    url: `/product/${id}`,
-                    method: 'PUT',
-                    body: data,
-                }
-            },
-            invalidatesTags: ['sports']
-        }),
+
     }),
 });
 
-export const { useAddProductsMutation, useGetAllProductsQuery, useDeleteProductMutation, useUpdateProductMutation } = productApi;
+export const { useAddProductsMutation, useGetAllProductsQuery, useDeleteProductMutation, useUpdateProductMutation, useGetProductByIdQuery } = productApi;

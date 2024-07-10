@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import UpdateProductModal from "../product/UpdateProductModal";
 import { Button } from "./button";
 
-type TProduct = {
+export type TProduct = {
   _id: string;
   title: string;
   price: number;
@@ -16,7 +16,8 @@ type TProduct = {
   category?: string; // Optional properties
   description?: string; // Optional properties
 };
-const SingleProductRow = ({ title, price, _id, imgurl }: TProduct) => {
+const SingleProductRow = (product: TProduct) => {
+  const { _id, title, price, imgurl } = product;
   const [deleteProduct, { isLoading, isError }] = useDeleteProductMutation();
   // const dispatch = useDispatch();
 
@@ -32,7 +33,7 @@ const SingleProductRow = ({ title, price, _id, imgurl }: TProduct) => {
       </td>
       <td className="border border-slate-300 px-3">{price}$</td>
       <td className="border border-slate-300 text-center">
-        <UpdateProductModal />
+        <UpdateProductModal product={product} />
       </td>
       <td className="border border-slate-300 text-center">
         <Button

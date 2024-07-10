@@ -1,4 +1,4 @@
-import { useAddProductsMutation } from "@/redux/features/Product/productApi";
+import { useUpdateProductMutation } from "@/redux/features/Product/productApi";
 import { FormEvent, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { Button } from "../ui/button";
@@ -22,26 +22,38 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { TProduct } from "../ui/SingleProductRow";
 
-const UpdateProductModal = () => {
-  const [title, setTitle] = useState("");
-  const [imgurl, setImgurl] = useState("");
-  const [description, setdescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [brand, setBrand] = useState("");
-  const [quantity, setQuantity] = useState<number | null>(null);
-  const [rating, setRating] = useState<number | null>(null);
-  const [price, setPrice] = useState<number | null>(null);
+const UpdateProductModal = ({ product }: { product: TProduct }) => {
+  const [title, setTitle] = useState(product.title);
+  const [description, setDescription] = useState(product.description);
+  const [imgurl, setImgurl] = useState(product.imgurl);
+  const [category, setCategory] = useState(product.category);
+  const [brand, setBrand] = useState(product.brand);
+  const [quantity, setQuantity] = useState(product.quantity || 0);
+  const [rating, setRating] = useState(product.rating || 0);
+  const [price, setPrice] = useState(product.price);
 
-  const [addProduct, { data, isLoading, isError }] = useAddProductsMutation();
-  console.log(data);
+  console.log(
+    "before update =>",
+    title,
+    imgurl,
+    description,
+    category,
+    brand,
+    quantity,
+    rating,
+    price
+  );
+
+  const [updateProduct, { isLoading, isError }] = useUpdateProductMutation();
 
   if (isError) return <div>An error has occurred!</div>;
-  if (isLoading) return <div>An error has occurred!</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const productData = {
+    const updatedProductData = {
       title,
       imgurl,
       description,
@@ -51,8 +63,10 @@ const UpdateProductModal = () => {
       rating,
       price,
     };
-    addProduct(productData);
+    console.log("update =>", updatedProductData);
+    updateProduct({ id: product._id, data: updatedProductData });
   };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -65,9 +79,9 @@ const UpdateProductModal = () => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add Product</DialogTitle>
+          <DialogTitle>Update Product</DialogTitle>
           <DialogDescription>
-            Add your desire product here. Click save when you're done.
+            Update your desired product here. Click save when you're done.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
@@ -77,10 +91,10 @@ const UpdateProductModal = () => {
                 Title
               </Label>
               <Input
-                onBlur={(e) => setTitle(e.target.value)}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 id="title"
-                placeholder="Pedro Duarte"
-                required
+                placeholder="Product Title"
                 className="col-span-3"
               />
             </div>
@@ -89,9 +103,10 @@ const UpdateProductModal = () => {
                 Image Url
               </Label>
               <Input
-                onBlur={(e) => setImgurl(e.target.value)}
+                value={imgurl}
+                onChange={(e) => setImgurl(e.target.value)}
                 id="imgurl"
-                placeholder="short imgurl"
+                placeholder="Image URL"
                 className="col-span-3"
               />
             </div>
@@ -100,9 +115,10 @@ const UpdateProductModal = () => {
                 Description
               </Label>
               <Input
-                onBlur={(e) => setdescription(e.target.value)}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 id="description"
-                placeholder="short description"
+                placeholder="Product Description"
                 className="col-span-3"
               />
             </div>
@@ -110,7 +126,10 @@ const UpdateProductModal = () => {
               <Label htmlFor="category" className="">
                 Category
               </Label>
-              <Select onValueChange={(value) => setCategory(value)}>
+              <Select
+                value={category}
+                onValueChange={(value) => setCategory(value)}
+              >
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Set Category" />
                 </SelectTrigger>
@@ -119,7 +138,7 @@ const UpdateProductModal = () => {
                     <SelectLabel>Category</SelectLabel>
                     <SelectItem value="basketball">Basketball</SelectItem>
                     <SelectItem value="soccer">Soccer</SelectItem>
-                    <SelectItem value="cycling">Cricket</SelectItem>
+                    <SelectItem value="cycling">Cycling</SelectItem>
                     <SelectItem value="tennis">Tennis</SelectItem>
                     <SelectItem value="baseball">Baseball</SelectItem>
                     <SelectItem value="golf">Golf</SelectItem>
@@ -134,10 +153,10 @@ const UpdateProductModal = () => {
                 Brand
               </Label>
               <Input
-                onBlur={(e) => setBrand(e.target.value)}
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
                 id="brand"
-                placeholder="Nike"
-                required
+                placeholder="Brand"
                 className="col-span-3"
               />
             </div>
@@ -146,15 +165,12 @@ const UpdateProductModal = () => {
                 Quantity
               </Label>
               <Input
-                onBlur={(e) =>
-                  setQuantity(
-                    e.target.value ? parseFloat(e.target.value) : null
-                  )
-                }
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
                 id="quantity"
-                placeholder=""
-                required
+                placeholder="Quantity"
                 className="col-span-3"
+                type="number"
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
@@ -162,13 +178,12 @@ const UpdateProductModal = () => {
                 Rating
               </Label>
               <Input
-                onBlur={(e) =>
-                  setRating(e.target.value ? parseFloat(e.target.value) : null)
-                }
+                value={rating}
+                onChange={(e) => setRating(Number(e.target.value))}
                 id="rating"
-                placeholder=""
-                required
+                placeholder="Rating"
                 className="col-span-3"
+                type="number"
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
@@ -176,13 +191,12 @@ const UpdateProductModal = () => {
                 Price
               </Label>
               <Input
-                onBlur={(e) =>
-                  setPrice(e.target.value ? parseFloat(e.target.value) : null)
-                }
+                value={price}
+                onChange={(e) => setPrice(Number(e.target.value))}
                 id="price"
-                placeholder="Enter price"
-                required
+                placeholder="Price"
                 className="col-span-3"
+                type="number"
               />
             </div>
           </div>
