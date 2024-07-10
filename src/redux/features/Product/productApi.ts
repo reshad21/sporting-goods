@@ -22,7 +22,18 @@ const productApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ['sports']
         }),
+
+        deleteProduct: builder.mutation({
+            query: (id) => {
+                console.log("Deleting todo with id:", id);
+                return {
+                    url: `/product/${id}`,
+                    method: 'DELETE',
+                }
+            },
+            invalidatesTags: ['sports']
+        }),
     }),
 });
 
-export const { useAddProductsMutation, useGetAllProductsQuery } = productApi;
+export const { useAddProductsMutation, useGetAllProductsQuery, useDeleteProductMutation } = productApi;
