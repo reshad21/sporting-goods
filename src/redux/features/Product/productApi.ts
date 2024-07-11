@@ -3,18 +3,6 @@ import { baseApi } from "../../api/baseApi";
 const productApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
-        updateProduct: builder.mutation({
-            query: ({ id, data }) => {
-                console.log("Updating product with id:", id, "and data:", data);
-                return {
-                    url: `/product/${id}`,
-                    method: 'PUT',
-                    body: data,
-                }
-            },
-            invalidatesTags: ['sports']
-        }),
-
         // getAllProducts: builder.query({
         //     query: () => ({
         //         url: '/products',
@@ -71,6 +59,17 @@ const productApi = baseApi.injectEndpoints({
             invalidatesTags: ['sports']
         }),
 
+        updateProduct: builder.mutation({
+            query: ({ id, data }) => {
+                console.log("Updating product with id:", id, "and data:", data);
+                return {
+                    url: `/product/${id}`,
+                    method: 'PUT',
+                    body: data,
+                }
+            },
+            invalidatesTags: ['sports']
+        }),
 
     }),
 });
