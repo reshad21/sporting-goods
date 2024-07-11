@@ -14,19 +14,19 @@ import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
 import { useState } from "react";
 
 const Homepage = () => {
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("all");
 
   const {
     data: products,
     isLoading,
     isError,
-  } = useGetAllProductsQuery(category);
+  } = useGetAllProductsQuery(category === "all" ? "" : category);
 
   if (isError) return <div>An error has occurred!</div>;
-  if (isLoading) return <div>An error has occurred!</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   const handleClearFilters = () => {
-    setCategory("");
+    setCategory("all");
   };
 
   return (
@@ -35,13 +35,14 @@ const Homepage = () => {
         <div>
           <Button onClick={handleClearFilters}>Clear all Filter</Button>
         </div>
-        <Select onValueChange={(value) => setCategory(value)}>
+        <Select value={category} onValueChange={(value) => setCategory(value)}>
           <SelectTrigger className="w-[200px] bg-slate-900 text-white outline-0">
             <SelectValue placeholder="Set Category" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Category</SelectLabel>
+              <SelectItem value="all">Set Category</SelectItem>
               <SelectItem value="basketball">Basketball</SelectItem>
               <SelectItem value="soccer">Soccer</SelectItem>
               <SelectItem value="cycling">Cricket</SelectItem>
