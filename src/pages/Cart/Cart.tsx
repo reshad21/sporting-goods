@@ -14,7 +14,7 @@ const Cart = () => {
           {products?.length > 0 &&
             products.map((product) => (
               <div className="px-1 mb-5 grid grid-cols-3 items-center">
-                <h1 className="text-[13px] font-semibold">{product.title}</h1>
+                <h1 className="text-md font-semibold">{product.title}</h1>
                 <div className="flex justify-center items-center gap-3 border-2 w-[60%] mx-auto">
                   <button onClick={() => dispatch(decrease(product))}>
                     <span>
@@ -22,8 +22,8 @@ const Cart = () => {
                     </span>
                   </button>
 
-                  <span className="text-sm font-semibold">
-                    {product.quantity}
+                  <span className="text-md font-semibold">
+                    {product.amount}
                   </span>
 
                   <button onClick={() => dispatch(increase(product))}>
@@ -32,7 +32,7 @@ const Cart = () => {
                     </span>
                   </button>
                 </div>
-                <div className="text-sm text-end">
+                <div className="text-md text-end">
                   <span className="font-bold">Price: </span>
                   {product.price}
                 </div>
@@ -41,10 +41,10 @@ const Cart = () => {
           {products?.length > 0 ? (
             <div className="mt-10">
               <div className="flex justify-between">
-                <p className="text-sm font-semibold text-green-600">
+                <p className="text-md font-semibold text-green-600">
                   Total Amount:
                 </p>
-                <span className="text-slate-600 text-sm font-semibold text-end px-1">
+                <span className="text-slate-600 text-md font-semibold text-end px-1">
                   ${totalPrice}
                 </span>
               </div>

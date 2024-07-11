@@ -2,11 +2,16 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Define the types for the cart item and the state
 interface CartItem {
-    id: string;
-    name: string;
+    _id: string;
     title: string;
     price: number;
-    quantity: number;
+    imgurl: string;
+    rating?: number;
+    quantity?: number;
+    brand?: string;
+    category?: string;
+    description?: string;
+    amount?: number
 }
 
 interface CartState {
@@ -25,41 +30,41 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action: PayloadAction<CartItem>) => {
-            const existingProduct = state.cart.find(product => product.id === action.payload.id);
+            const existingProduct = state.cart.find(product => product._id === action.payload._id);
             if (existingProduct) {
-                existingProduct.quantity += 1;
+                existingProduct.amount = (existingProduct.amount ?? 0) + 1;
                 existingProduct.price += action.payload.price;
                 existingProduct.price = Number(existingProduct.price.toFixed(2));
                 state.totalPrice = Number(state.totalPrice.toFixed(2));
             } else {
-                state.cart.push({ ...action.payload, quantity: 1 });
+                state.cart.push({ ...action.payload, amount: 1 });
                 state.totalPrice += action.payload.price;
             }
             state.totalPrice = Number(state.totalPrice.toFixed(2));
         },
-        increase: (state, action: PayloadAction<{ id: string }>) => {
-            const existingProduct = state.cart.find(product => product.id === action.payload.id);
+        increase: (state, action: PayloadAction<{ _id: string }>) => {
+            const existingProduct = state.cart.find(product => product._id === action.payload._id);
             if (existingProduct) {
-                const pricePerUnit = existingProduct.price / existingProduct.quantity;
-                existingProduct.quantity += 1;
+                const pricePerUnit = existingProduct.price / (existingProduct.amount ?? 1);
+                existingProduct.amount = (existingProduct.amount ?? 0) + 1;
                 existingProduct.price += pricePerUnit;
                 state.totalPrice += pricePerUnit;
                 existingProduct.price = Number(existingProduct.price.toFixed(2));
                 state.totalPrice = Number(state.totalPrice.toFixed(2));
             }
         },
-        decrease: (state, action: PayloadAction<{ id: string }>) => {
-            const existingProduct = state.cart.find(product => product.id === action.payload.id);
+        decrease: (state, action: PayloadAction<{ _id: string }>) => {
+            const existingProduct = state.cart.find(product => product._id === action.payload._id);
             if (existingProduct) {
-                if (existingProduct.quantity > 1) {
-                    const pricePerUnit = existingProduct.price / existingProduct.quantity;
-                    existingProduct.quantity -= 1;
+                if (existingProduct.amount && existingProduct.amount > 1) {
+                    const pricePerUnit = existingProduct.price / existingProduct.amount;
+                    existingProduct.amount -= 1;
                     existingProduct.price -= pricePerUnit;
                     state.totalPrice -= pricePerUnit;
                     existingProduct.price = Number(existingProduct.price.toFixed(2));
                     state.totalPrice = Number(state.totalPrice.toFixed(2));
                 } else {
-                    state.cart = state.cart.filter(product => product.id !== action.payload.id);
+                    state.cart = state.cart.filter(product => product._id !== action.payload._id);
                     state.totalPrice -= existingProduct.price;
                 }
             }

@@ -1,3 +1,5 @@
+import { addToCart } from "@/redux/features/Cart/CartSlice";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "./button";
 import { Label } from "./label";
@@ -13,17 +15,21 @@ export type TProductdata = {
   imgurl: string;
   title: string;
 };
-const ProductCard = ({
-  _id,
-  price,
-  rating,
-  quantity,
-  brand,
-  category,
-  description,
-  imgurl,
-  title,
-}: TProductdata) => {
+const ProductCard = (product: TProductdata) => {
+  const {
+    _id,
+    title,
+    price,
+    imgurl,
+    description,
+    brand,
+    category,
+    quantity,
+    rating,
+  } = product;
+
+  const dispatch = useDispatch();
+
   return (
     <div className="card bg-base-100 w-full shadow-xl">
       <figure>
@@ -56,7 +62,12 @@ const ProductCard = ({
           <Link to={`/singleProduct/${_id}`}>
             <Button className="btn btn-primary btn-sm">View Details</Button>
           </Link>
-          <Button className="btn btn-primary btn-sm">Add To Cart</Button>
+          <Button
+            onClick={() => dispatch(addToCart(product))}
+            className="btn btn-primary btn-sm"
+          >
+            Add To Cart
+          </Button>
         </div>
       </div>
     </div>
