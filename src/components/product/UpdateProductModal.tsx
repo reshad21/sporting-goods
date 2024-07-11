@@ -32,7 +32,7 @@ const UpdateProductModal = ({ product }: { product: TProduct }) => {
   const [brand, setBrand] = useState(product.brand);
   const [quantity, setQuantity] = useState(product.quantity || 0);
   const [rating, setRating] = useState(product.rating || 0);
-  const [price, setPrice] = useState(product.price);
+  const [price, setPrice] = useState(product.price || 0);
 
   console.log(
     "before update =>",
@@ -138,7 +138,7 @@ const UpdateProductModal = ({ product }: { product: TProduct }) => {
                     <SelectLabel>Category</SelectLabel>
                     <SelectItem value="basketball">Basketball</SelectItem>
                     <SelectItem value="soccer">Soccer</SelectItem>
-                    <SelectItem value="cycling">Cycling</SelectItem>
+                    <SelectItem value="cycling">Cricket</SelectItem>
                     <SelectItem value="tennis">Tennis</SelectItem>
                     <SelectItem value="baseball">Baseball</SelectItem>
                     <SelectItem value="golf">Golf</SelectItem>

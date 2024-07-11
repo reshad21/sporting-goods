@@ -1,3 +1,6 @@
+import ContactSection from "@/components/Home/ContactSection";
+import Contactus from "@/components/Home/Contactus";
+import HeroSlider from "@/components/Home/HeroSlider";
 import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/Container";
 import ProductCard, { TProductdata } from "@/components/ui/ProductCard";
@@ -31,12 +34,13 @@ const Homepage = () => {
 
   return (
     <Container>
+      <HeroSlider />
       <div className="flex justify-end items-end gap-2">
         <div>
           <Button onClick={handleClearFilters}>Clear all Filter</Button>
         </div>
         <Select value={category} onValueChange={(value) => setCategory(value)}>
-          <SelectTrigger className="w-[200px] bg-slate-900 text-white outline-0">
+          <SelectTrigger className="w-[150px] bg-slate-900 text-white outline-0">
             <SelectValue placeholder="Set Category" />
           </SelectTrigger>
           <SelectContent>
@@ -61,6 +65,9 @@ const Homepage = () => {
           <ProductCard {...product} key={product._id} />
         ))}
       </div>
+
+      <Contactus />
+      <ContactSection />
     </Container>
   );
 };
