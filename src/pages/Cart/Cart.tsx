@@ -13,12 +13,15 @@ const Cart = () => {
         <>
           {products?.length > 0 &&
             products.map((product) => (
-              <div className="px-1 mb-5 grid grid-cols-3 items-center">
+              <div className="mb-3 grid grid-cols-3 items-center border-2 border-slate-300 rounded-md p-3">
                 <h1 className="text-md font-semibold">{product.title}</h1>
-                <div className="flex justify-center items-center gap-3 border-2 w-[60%] mx-auto">
-                  <button onClick={() => dispatch(decrease(product))}>
+                <div className="flex justify-center items-center gap-3 w-[60%] mx-auto">
+                  <button
+                    onClick={() => dispatch(decrease(product))}
+                    className="border-2 rounded-sm px-1"
+                  >
                     <span>
-                      <AiOutlineMinus size={10} />
+                      <AiOutlineMinus size={15} />
                     </span>
                   </button>
 
@@ -26,7 +29,10 @@ const Cart = () => {
                     {product.amount}
                   </span>
 
-                  <button onClick={() => dispatch(increase(product))}>
+                  <button
+                    onClick={() => dispatch(increase(product))}
+                    className="border-2 rounded-sm px-1"
+                  >
                     <span>
                       <AiOutlinePlus size={15} />
                     </span>

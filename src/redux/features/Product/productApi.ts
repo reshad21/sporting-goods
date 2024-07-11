@@ -15,13 +15,30 @@ const productApi = baseApi.injectEndpoints({
             invalidatesTags: ['sports']
         }),
 
+        // getAllProducts: builder.query({
+        //     query: () => ({
+        //         url: '/products',
+        //         method: 'GET',
+        //     }),
+        //     providesTags: ['sports']
+        // }),
+
+        //* better filter approch
         getAllProducts: builder.query({
-            query: () => ({
-                url: '/products',
-                method: 'GET',
-            }),
+            query: (category) => {
+                const params = new URLSearchParams();
+                if (category) {
+                    params.append('category', category);
+                }
+                return {
+                    url: `/products`,
+                    method: 'GET',
+                    params: params
+                }
+            },
             providesTags: ['sports']
         }),
+
 
         getProductById: builder.query({
             query: (id) => ({
@@ -58,4 +75,4 @@ const productApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useAddProductsMutation, useGetAllProductsQuery, useDeleteProductMutation, useUpdateProductMutation, useGetProductByIdQuery } = productApi;
+export const { useAddProductsMutation, useGetAllProductsQuery, useDeleteProductMutation, useUpdateProductMutation, useGetProductByIdQuery, } = productApi;

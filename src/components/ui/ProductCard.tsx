@@ -48,7 +48,11 @@ const ProductCard = (product: TProductdata) => {
   return (
     <div className="card bg-base-100 w-full shadow-xl">
       <figure>
-        <img src={imgurl} alt="Product Image" className="w-full" />
+        <img
+          src={imgurl}
+          alt="Product Image"
+          className="size-40 object-cover"
+        />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>

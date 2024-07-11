@@ -7,9 +7,9 @@ import { Button } from "./button";
 
 export type TProduct = {
   _id: string;
-  title: string;
-  price: number;
-  imgurl: string;
+  title?: string;
+  price?: number;
+  imgurl?: string;
   rating?: number; // Optional properties
   quantity?: number; // Optional properties
   brand?: string; // Optional properties
@@ -18,8 +18,9 @@ export type TProduct = {
 };
 const SingleProductRow = (product: TProduct) => {
   const { _id, title, price, imgurl } = product;
+  console.log(price);
+
   const [deleteProduct, { isLoading, isError }] = useDeleteProductMutation();
-  // const dispatch = useDispatch();
 
   if (isError) return <div>An error has occurred!</div>;
   if (isLoading) return <div>An error has occurred!</div>;
