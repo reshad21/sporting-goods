@@ -34,8 +34,8 @@ const SingleProduct = () => {
           <div className="flex items-center gap-2">
             <Label>Quantity:</Label>
             <span>
-              {data.volume > 0 ? (
-                data.volume
+              {data.quantity > 0 ? (
+                data.quantity
               ) : (
                 <Badge variant="destructive">Stock Out</Badge>
               )}

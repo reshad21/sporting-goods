@@ -18,7 +18,6 @@ export type TProduct = {
 };
 const SingleProductRow = (product: TProduct) => {
   const { _id, title, price, imgurl } = product;
-  console.log(price);
 
   const [deleteProduct, { isLoading, isError }] = useDeleteProductMutation();
 
@@ -26,17 +25,17 @@ const SingleProductRow = (product: TProduct) => {
   if (isLoading) return <div>An error has occurred!</div>;
   return (
     <tr>
-      <td className="border border-slate-300 px-3">
+      <td className="border-2 border-slate-300 px-3">
         <div className="flex items-center gap-2">
           <img src={imgurl} alt="" className="size-4" />
-          <h1>{title}</h1>
+          <h1 className="font-semibold">{title}</h1>
         </div>
       </td>
-      <td className="border border-slate-300 px-3">{price}$</td>
-      <td className="border border-slate-300 text-center">
+      <td className="border-2 border-slate-300 px-3 font-semibold">{price}$</td>
+      <td className="border-2 border-slate-300 text-center">
         <UpdateProductModal product={product} />
       </td>
-      <td className="border border-slate-300 text-center">
+      <td className="border-2 border-slate-300 text-center">
         <Button
           className="bg-white hover:text-slate-900"
           onClick={() => deleteProduct(_id)}
@@ -47,7 +46,7 @@ const SingleProductRow = (product: TProduct) => {
           />
         </Button>
       </td>
-      <td className="border border-slate-300 text-center">
+      <td className="border-2 border-slate-300 text-center">
         <Link to={`/singleProduct/${_id}`} className="">
           <Button className="bg-white hover:text-slate-900">
             <GrView

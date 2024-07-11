@@ -34,18 +34,6 @@ const UpdateProductModal = ({ product }: { product: TProduct }) => {
   const [rating, setRating] = useState(product.rating || 0);
   const [price, setPrice] = useState(product.price || 0);
 
-  console.log(
-    "before update =>",
-    title,
-    imgurl,
-    description,
-    category,
-    brand,
-    quantity,
-    rating,
-    price
-  );
-
   const [updateProduct, { isLoading, isError }] = useUpdateProductMutation();
 
   if (isError) return <div>An error has occurred!</div>;
@@ -63,7 +51,6 @@ const UpdateProductModal = ({ product }: { product: TProduct }) => {
       rating,
       price,
     };
-    console.log("update =>", updatedProductData);
     updateProduct({ id: product._id, data: updatedProductData });
   };
 

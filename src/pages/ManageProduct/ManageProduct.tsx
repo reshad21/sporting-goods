@@ -18,7 +18,7 @@ const ManageProduct = () => {
       <div className="my-5">
         <AddProductModal />
       </div>
-      <table className="w-full border-2 rounded-lg border-slate-400">
+      <table className="w-full border-2 border-slate-300 ">
         <thead>
           <tr>
             <th className="border border-slate-300">Title</th>

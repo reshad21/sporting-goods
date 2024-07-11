@@ -32,9 +32,7 @@ const AddProductModal = () => {
   const [rating, setRating] = useState<number | null>(null);
   const [price, setPrice] = useState<number | null>(null);
 
-  const [addProduct, { data, isLoading, isError }] = useAddProductsMutation();
-
-  console.log("product=>", data);
+  const [addProduct, { isLoading, isError }] = useAddProductsMutation();
 
   if (isError) return <div>An error has occurred!</div>;
   if (isLoading) return <div>An error has occurred!</div>;
