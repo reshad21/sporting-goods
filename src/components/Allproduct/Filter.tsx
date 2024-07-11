@@ -30,10 +30,12 @@ const Filter = () => {
     <div className="my-10">
       <div className="flex justify-end items-end gap-2">
         <div>
-          <Button onClick={handleClearFilters}>Clear all Filter</Button>
+          <Button onClick={handleClearFilters} className="bg-blue-500">
+            Clear all Filter
+          </Button>
         </div>
         <Select value={category} onValueChange={(value) => setCategory(value)}>
-          <SelectTrigger className="w-[150px] bg-slate-900 text-white outline-0">
+          <SelectTrigger className="w-[150px] bg-blue-500 text-white outline-0">
             <SelectValue placeholder="Set Category" />
           </SelectTrigger>
           <SelectContent>
@@ -52,7 +54,7 @@ const Filter = () => {
           </SelectContent>
         </Select>
       </div>
-      <div className="grid gird-cols-1 md:grid-cols-4 gap-3 my-5">
+      <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 my-5">
         {products?.data?.map((product: TProductdata) => (
           <ProductCard {...product} key={product._id} />
         ))}

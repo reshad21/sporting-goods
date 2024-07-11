@@ -54,7 +54,7 @@ const AddProductModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Add Product</Button>
+        <Button className="bg-blue-500">Add Product</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

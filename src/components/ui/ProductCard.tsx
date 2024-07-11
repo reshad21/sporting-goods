@@ -85,12 +85,12 @@ const ProductCard = (product: TProductdata) => {
         </div>
         <div className="card-actions justify-between">
           <Link to={`/singleProduct/${_id}`}>
-            <Button className="btn btn-primary btn-sm">View Details</Button>
+            <Button className="btn bg-blue-500 btn-sm">View Details</Button>
           </Link>
           <Button
             onClick={handleAddToCart}
             disabled={volume <= 0}
-            className="btn btn-primary btn-sm"
+            className="btn bg-orange-500 btn-sm"
           >
             Add To Cart
           </Button>
