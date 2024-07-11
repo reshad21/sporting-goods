@@ -27,7 +27,7 @@ const Filter = () => {
     setCategory("all");
   };
   return (
-    <div>
+    <div className="my-10">
       <div className="flex justify-end items-end gap-2">
         <div>
           <Button onClick={handleClearFilters}>Clear all Filter</Button>
