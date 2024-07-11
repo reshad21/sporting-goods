@@ -15,6 +15,7 @@ export type TProductdata = {
   imgurl: string;
   title: string;
 };
+
 const ProductCard = (product: TProductdata) => {
   const {
     _id,
@@ -29,6 +30,15 @@ const ProductCard = (product: TProductdata) => {
   } = product;
 
   const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    if (quantity > 0) {
+      const updatedProduct = { ...product, quantity: quantity - 1 };
+      dispatch(addToCart(updatedProduct));
+    } else {
+      alert("Product is out of stock");
+    }
+  };
 
   return (
     <div className="card bg-base-100 w-full shadow-xl">
@@ -62,10 +72,7 @@ const ProductCard = (product: TProductdata) => {
           <Link to={`/singleProduct/${_id}`}>
             <Button className="btn btn-primary btn-sm">View Details</Button>
           </Link>
-          <Button
-            onClick={() => dispatch(addToCart(product))}
-            className="btn btn-primary btn-sm"
-          >
+          <Button onClick={handleAddToCart} className="btn btn-primary btn-sm">
             Add To Cart
           </Button>
         </div>

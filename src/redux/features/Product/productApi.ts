@@ -28,7 +28,7 @@ const productApi = baseApi.injectEndpoints({
                 url: `/product/${id}`,
                 method: 'GET',
             }),
-            providesTags: (result, error, id) => [{ type: 'sports', id }]
+            providesTags: (id) => [{ type: 'sports', id }]
         }),
 
         addProducts: builder.mutation({
