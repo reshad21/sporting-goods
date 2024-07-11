@@ -1,6 +1,8 @@
 import { addToCart } from "@/redux/features/Cart/CartSlice";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { Badge } from "./badge";
 import { Button } from "./button";
 import { Label } from "./label";
 
@@ -31,9 +33,12 @@ const ProductCard = (product: TProductdata) => {
 
   const dispatch = useDispatch();
 
+  const [volume, setVolume] = useState(quantity);
+
   const handleAddToCart = () => {
     if (quantity > 0) {
       const updatedProduct = { ...product, quantity: quantity - 1 };
+      setVolume((previousData) => previousData - 1);
       dispatch(addToCart(updatedProduct));
     } else {
       alert("Product is out of stock");
@@ -58,7 +63,13 @@ const ProductCard = (product: TProductdata) => {
         </div>
         <div className="flex items-center gap-2">
           <Label>Quantity:</Label>
-          <span>{quantity}</span>
+          <span>
+            {volume > 0 ? (
+              volume
+            ) : (
+              <Badge variant="destructive">Stock Out</Badge>
+            )}
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <Label>Rating:</Label>
@@ -72,7 +83,11 @@ const ProductCard = (product: TProductdata) => {
           <Link to={`/singleProduct/${_id}`}>
             <Button className="btn btn-primary btn-sm">View Details</Button>
           </Link>
-          <Button onClick={handleAddToCart} className="btn btn-primary btn-sm">
+          <Button
+            onClick={handleAddToCart}
+            disabled={volume <= 0}
+            className="btn btn-primary btn-sm"
+          >
             Add To Cart
           </Button>
         </div>
