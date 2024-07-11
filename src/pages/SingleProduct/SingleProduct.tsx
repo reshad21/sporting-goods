@@ -2,11 +2,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/Container";
 import { Label } from "@/components/ui/label";
+import { addToCart } from "@/redux/features/Cart/CartSlice";
 import { useGetProductByIdQuery } from "@/redux/features/Product/productApi";
-import { Link, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const SingleProduct = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const { data, isError, isLoading } = useGetProductByIdQuery(id);
   if (isError) return <div>An error has occurred!</div>;
   if (isLoading) return <div>An error has occurred!</div>;
@@ -50,9 +53,12 @@ const SingleProduct = () => {
             <span>{data.price}$</span>
           </div>
           <div className="card-actions justify-between">
-            <Link to={`/singleProduct/${data._id}`}>
-              <Button className="btn btn-primary btn-sm">View Details</Button>
-            </Link>
+            <Button
+              onClick={() => dispatch(addToCart(data))}
+              className="btn btn-primary btn-sm"
+            >
+              ADD TO CART
+            </Button>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { TfiLocationPin } from "react-icons/tfi";
 import { TiMessages } from "react-icons/ti";
 const Contactus = () => {
   return (
-    <div className="flex justify-between gap-4 my-20">
+    <div className="flex flex-col md:flex-row justify-between gap-4 my-10">
       <motion.div
         initial={{ x: -1000 }}
         animate={{ x: 0 }}

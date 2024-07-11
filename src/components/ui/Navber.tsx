@@ -2,6 +2,7 @@ import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
 import { useAppSelector } from "@/redux/hooks";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/sportsgoodslogo.jpg";
 import Topbar from "../layout/Topbar";
 import Container from "./Container";
 import { Badge } from "./badge";
@@ -48,7 +49,9 @@ const Navber = () => {
               <Topbar />
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Sports Good</a>
+          <Link to="/" className="">
+            <img src={logo} className="size-14 rounded-full" />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

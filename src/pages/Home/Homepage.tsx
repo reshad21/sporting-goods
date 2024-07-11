@@ -60,7 +60,7 @@ const Homepage = () => {
         </Select>
       </div>
 
-      <div className="grid grid-cols-4 gap-3 my-5">
+      <div className="grid gird-cols-1 md:grid-cols-4 gap-3 my-5">
         {products?.data?.map((product: TProductdata) => (
           <ProductCard {...product} key={product._id} />
         ))}

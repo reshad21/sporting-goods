@@ -1,3 +1,4 @@
+import Contact from "@/pages/Contact/Contact";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import About from "../pages/About/About";
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
     ],
   },
