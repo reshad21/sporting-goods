@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { GiSettingsKnobs } from "react-icons/gi";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -41,7 +42,10 @@ const FilterForm = ({ onChange }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-blue-500">Filter Product</Button>
+        <Button className="bg-blue-500">
+          <span className="mr-2">FILTER</span>
+          <GiSettingsKnobs size={15} />
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
