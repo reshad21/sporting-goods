@@ -1,3 +1,4 @@
+import Filter from "@/components/Allproduct/Filter";
 import ContactSection from "@/components/Home/ContactSection";
 import Contactus from "@/components/Home/Contactus";
 import HeroSlider from "@/components/Home/HeroSlider";
@@ -11,6 +12,7 @@ const Homepage = () => {
       <ProductsSection />
       <Contactus />
       <ContactSection />
+      <Filter />
     </Container>
   );
 };
