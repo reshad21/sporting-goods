@@ -1,15 +1,22 @@
 import { useSearchProductsQuery } from "@/redux/features/Product/productApi";
+import { addProduct } from "@/redux/features/Product/ProductSlice";
+import { useAppSelector } from "@/redux/hooks";
 import { FormEvent, useState } from "react";
 import { IoSearch } from "react-icons/io5";
+import { useDispatch } from "react-redux";
 
 const SearchSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const { data } = useSearchProductsQuery(searchTerm);
 
+  const searcData = useAppSelector((state) => state.product.products);
+
+  const dispatch = useDispatch();
+
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    console.log(searchTerm);
-    console.log(data);
+    dispatch(addProduct(data));
+    console.log("THis is search data", searcData);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

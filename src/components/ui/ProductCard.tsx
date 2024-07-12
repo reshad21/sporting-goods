@@ -8,14 +8,14 @@ import { Label } from "./label";
 
 export type TProductdata = {
   _id: string;
-  price: number;
-  rating: number;
-  quantity: number;
-  brand: string;
-  category: string;
-  description: string;
-  imgurl: string;
   title: string;
+  price: number;
+  imgurl: string;
+  rating?: number;
+  quantity: number;
+  brand?: string;
+  category?: string;
+  description?: string;
 };
 
 const ProductCard = (product: TProductdata) => {
