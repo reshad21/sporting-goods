@@ -1,9 +1,9 @@
 import { useGetAllFilterProductsQuery } from "@/redux/features/Filter/filterApi";
 import { useState } from "react";
-import { IoSearch } from "react-icons/io5";
 import { Button } from "../ui/button";
 import ProductCard, { TProductdata } from "../ui/ProductCard";
 import FilterForm from "./FilterForm";
+import SearchSection from "./SearchSection";
 
 const FilterSection = () => {
   const [filters, setFilters] = useState({
@@ -33,24 +33,7 @@ const FilterSection = () => {
   return (
     <div className="my-10">
       <div className="flex justify-end items-center gap-2">
-        <div className="">
-          <form className="relative">
-            <input
-              type="text"
-              className="grow p-0 border-2 border-slate-300 pl-2 py-2 rounded-md"
-              placeholder="Search"
-
-              //   value={}
-              //   onChange={handleSearchChange}
-            />
-            <button
-              className="bg-orange-400 text-white border rounded-md p-3 absolute right-0 top-0 bottom-0"
-              type="submit"
-            >
-              <IoSearch />
-            </button>
-          </form>
-        </div>
+        <SearchSection />
         <Button onClick={handleClearFilters} className="bg-blue-500">
           CLEAR All FILTERS
         </Button>

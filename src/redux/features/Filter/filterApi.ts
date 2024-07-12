@@ -13,7 +13,21 @@ const filterApi = baseApi.injectEndpoints({
                 return queryStr.slice(0, -1);
             },
         }),
+        searchProducts: builder.query({
+            query: (searchTerm) => {
+                const params = new URLSearchParams();
+                if (searchTerm) {
+                    params.append('searchTerm', searchTerm);
+                }
+                return {
+                    url: `/products/search`,
+                    method: 'GET',
+                    params: params,
+                };
+            },
+            // providesTags: ['search'],
+        }),
     }),
 });
 
-export const { useGetAllFilterProductsQuery } = filterApi;
+export const { useGetAllFilterProductsQuery, useSearchProductsQuery } = filterApi;
