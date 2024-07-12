@@ -10,7 +10,7 @@ const Cart = () => {
   return (
     <div>
       <Container>
-        <>
+        <div className="my-5">
           {products?.length > 0 &&
             products.map((product) => (
               <div className="mb-3 grid grid-cols-3 items-center border-2 border-slate-300 rounded-md p-3">
@@ -79,7 +79,7 @@ const Cart = () => {
               </span>
             </div>
           )}
-        </>
+        </div>
       </Container>
     </div>
   );

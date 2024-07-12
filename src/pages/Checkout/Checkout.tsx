@@ -5,7 +5,7 @@ const Checkout = () => {
   return (
     <div>
       <Container>
-        <div className="bg-gray-50 py-5">
+        <div className="bg-gray-50 py-5 my-5">
           <div className="max-w-container mx-auto ">
             <div className="px-5">
               <div className="mb-2">
@@ -256,7 +256,7 @@ const Checkout = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <button className="block w-full max-w-xs mx-auto border border-transparent bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-600 text-white rounded-md px-5 py-2 font-semibold">
+                      <button className="block w-full max-w-xs mx-auto border border-transparent bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 text-white rounded-md px-5 py-2 font-semibold">
                         Place Order
                       </button>
                     </div>

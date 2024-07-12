@@ -6,13 +6,15 @@ import Container from "@/components/ui/Container";
 
 const Homepage = () => {
   return (
-    <Container>
+    <>
       <HeroSlider />
-      <Filter />
-      {/* <ProductsSection /> */}
-      <Contactus />
-      <ContactSection />
-    </Container>
+      <Container>
+        <Filter />
+        {/* <ProductsSection /> */}
+        <Contactus />
+        <ContactSection />
+      </Container>
+    </>
   );
 };
 

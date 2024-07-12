@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import Container from "./Container";
 
 const Footer = () => {
   return (
-    <div className="p-10 mt-7">
-      <Container>
-        <footer className="footer text-base-content ">
+    <>
+      <>
+        <footer className="footer py-5 justify-evenly bg-slate-900 text-white">
           <nav>
             <h6 className="footer-title">Services</h6>
             <a className="link link-hover">Branding</a>
@@ -61,8 +60,8 @@ const Footer = () => {
             </div>
           </nav>
         </footer>
-      </Container>
-    </div>
+      </>
+    </>
   );
 };
 

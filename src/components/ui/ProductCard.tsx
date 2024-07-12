@@ -83,14 +83,16 @@ const ProductCard = (product: TProductdata) => {
           <Label>PRICE:</Label>
           <span>{price}$</span>
         </div>
-        <div className="card-actions justify-between">
-          <Link to={`/singleProduct/${_id}`}>
-            <Button className="btn bg-blue-500 btn-sm">View Details</Button>
+        <div className="card-actions flex-col w-full">
+          <Link to={`/singleProduct/${_id}`} className="w-full">
+            <Button className="btn bg-blue-500 btn-sm w-full">
+              View Details
+            </Button>
           </Link>
           <Button
             onClick={handleAddToCart}
             disabled={volume <= 0}
-            className="btn bg-orange-500 btn-sm"
+            className="btn bg-orange-500 btn-sm w-full"
           >
             Add To Cart
           </Button>

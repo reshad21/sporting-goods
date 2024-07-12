@@ -127,7 +127,7 @@ const FilterForm = ({ onChange }: FilterFormProps) => {
           </div>
           <div className="flex justify-end">
             <DialogClose asChild>
-              <Button type="submit">Save changes</Button>
+              <Button type="submit">ENTER</Button>
             </DialogClose>
           </div>
         </form>
