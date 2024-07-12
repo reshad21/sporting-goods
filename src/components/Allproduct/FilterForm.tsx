@@ -21,15 +21,26 @@ import {
   SelectValue,
 } from "../ui/select";
 
-const FilterForm = ({ onChange }) => {
-  const [category, setCategory] = useState("");
-  const [brand, setBrand] = useState("");
+type TFilters = {
+  category: string;
+  brand: string;
+  rating: number | null;
+  price: number | null;
+};
+
+type FilterFormProps = {
+  onChange: (filters: TFilters) => void;
+};
+
+const FilterForm = ({ onChange }: FilterFormProps) => {
+  const [category, setCategory] = useState<string>("");
+  const [brand, setBrand] = useState<string>("");
   const [rating, setRating] = useState<number | null>(null);
   const [price, setPrice] = useState<number | null>(null);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const filterOption = {
+    const filterOption: TFilters = {
       category,
       brand,
       rating,

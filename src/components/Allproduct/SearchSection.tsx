@@ -1,4 +1,4 @@
-import { useSearchProductsQuery } from "@/redux/features/Filter/filterApi";
+import { useSearchProductsQuery } from "@/redux/features/Product/productApi";
 import { FormEvent, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 

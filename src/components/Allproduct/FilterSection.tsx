@@ -1,12 +1,19 @@
-import { useGetAllFilterProductsQuery } from "@/redux/features/Filter/filterApi";
+import { useGetAllFilterProductsQuery } from "@/redux/features/Product/productApi";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import ProductCard, { TProductdata } from "../ui/ProductCard";
 import FilterForm from "./FilterForm";
 import SearchSection from "./SearchSection";
 
+export type TFilters = {
+  category: string;
+  brand: string;
+  rating: number | null;
+  price: number | null;
+};
+
 const FilterSection = () => {
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<TFilters>({
     category: "",
     brand: "",
     rating: null,
@@ -19,7 +26,7 @@ const FilterSection = () => {
     isError,
   } = useGetAllFilterProductsQuery(filters);
 
-  const handleFiltersChange = (newFilters) => {
+  const handleFiltersChange = (newFilters: TFilters) => {
     setFilters(newFilters);
   };
 
