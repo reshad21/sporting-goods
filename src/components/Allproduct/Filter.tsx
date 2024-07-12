@@ -44,7 +44,7 @@ const Filter = () => {
               <SelectItem value="all">Set Category</SelectItem>
               <SelectItem value="basketball">Basketball</SelectItem>
               <SelectItem value="soccer">Soccer</SelectItem>
-              <SelectItem value="cycling">Cricket</SelectItem>
+              <SelectItem value="cricket">Cricket</SelectItem>
               <SelectItem value="tennis">Tennis</SelectItem>
               <SelectItem value="baseball">Baseball</SelectItem>
               <SelectItem value="golf">Golf</SelectItem>
