@@ -47,7 +47,14 @@ const FilterForm = ({ onChange }: FilterFormProps) => {
       price,
     };
     onChange(filterOption);
-    console.log("QUERY =>", filterOption);
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setCategory("");
+    setBrand("");
+    setRating(null);
+    setPrice(null);
   };
 
   return (
