@@ -1,7 +1,20 @@
 import Container from "@/components/ui/Container";
-import { Link } from "react-router-dom";
+import { clearCart } from "@/redux/features/Cart/CartSlice";
+import { useAppSelector } from "@/redux/hooks";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const Checkout = () => {
+  const navigate = useNavigate();
+  const checkProduct = useAppSelector((state) => state.cart.cart);
+  const { totalPrice } = useAppSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  const handlePlaceOrder = () => {
+    navigate("/");
+    dispatch(clearCart());
+  };
+
   return (
     <div>
       <Container>
@@ -10,7 +23,7 @@ const Checkout = () => {
             <div className="px-5">
               <div className="mb-2">
                 <Link
-                  to="/"
+                  to="/cart"
                   className="focus:outline-none hover:underline text-gray-500 text-sm"
                 >
                   <i className="mdi mdi-arrow-left text-gray-400"></i>Back
@@ -42,30 +55,32 @@ const Checkout = () => {
               <div className="w-full">
                 <div className="-mx-3 md:flex items-start">
                   <div className="px-3 md:w-7/12 lg:pr-10">
-                    <div className="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
-                      <div className="w-full flex items-center">
-                        <div className="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
-                          <img
-                            src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80"
-                            alt=""
-                          />
-                        </div>
-                        <div className="flex-grow pl-3">
-                          <h6 className="font-semibold uppercase text-gray-600">
-                            Ray Ban Sunglasses.
-                          </h6>
-                          <p className="text-gray-400">x 1</p>
-                        </div>
-                        <div>
-                          <span className="font-semibold text-gray-600 text-xl">
-                            $210
-                          </span>
-                          <span className="font-semibold text-gray-600 text-sm">
-                            .00
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                    {checkProduct.length > 0 &&
+                      checkProduct.map((product) => {
+                        return (
+                          <div className="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
+                            <div className="w-full flex items-center">
+                              <div className="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
+                                <img src={product.imgurl} alt="" />
+                              </div>
+                              <div className="flex-grow pl-3">
+                                <h6 className="font-semibold uppercase text-gray-600">
+                                  {product.title}
+                                </h6>
+                                <p className="text-gray-400">
+                                  x {product.amount}
+                                </p>
+                              </div>
+                              <div>
+                                <span className="font-semibold text-gray-600 text-xl">
+                                  ${product.price}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+
                     <div className="mb-6 pb-6 border-b border-gray-200">
                       <div className="-mx-2 flex items-end justify-end">
                         <div className="flex-grow px-2 lg:max-w-xs">
@@ -87,24 +102,6 @@ const Checkout = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="mb-6 pb-6 border-b border-gray-200 text-gray-800">
-                      <div className="w-full flex mb-3 items-center">
-                        <div className="flex-grow">
-                          <span className="text-gray-600">Subtotal</span>
-                        </div>
-                        <div className="pl-3">
-                          <span className="font-semibold">$190.91</span>
-                        </div>
-                      </div>
-                      <div className="w-full flex items-center">
-                        <div className="flex-grow">
-                          <span className="text-gray-600">Taxes (GST)</span>
-                        </div>
-                        <div className="pl-3">
-                          <span className="font-semibold">$19.09</span>
-                        </div>
-                      </div>
-                    </div>
                     <div className="mb-6 pb-6 border-b border-gray-200 md:border-none text-gray-800 text-xl">
                       <div className="w-full flex items-center">
                         <div className="flex-grow">
@@ -114,7 +111,7 @@ const Checkout = () => {
                           <span className="font-semibold text-gray-400 text-sm">
                             AUD
                           </span>{" "}
-                          <span className="font-semibold">$210.00</span>
+                          <span className="font-semibold">${totalPrice}</span>
                         </div>
                       </div>
                     </div>
@@ -240,7 +237,19 @@ const Checkout = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="w-full p-3">
+                      <div className="w-full p-3 flex gap-4">
+                        <label
+                          htmlFor="type2"
+                          className="flex items-center cursor-pointer"
+                        >
+                          <input
+                            type="radio"
+                            className="form-radio h-5 w-5 text-indigo-500"
+                            name="type"
+                            id="type2"
+                          />
+                          <span className="ml-2 text-gray-600">CashOn</span>
+                        </label>
                         <label
                           htmlFor="type2"
                           className="flex items-center cursor-pointer"
@@ -256,7 +265,10 @@ const Checkout = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <button className="block w-full max-w-xs mx-auto border border-transparent bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 text-white rounded-md px-5 py-2 font-semibold">
+                      <button
+                        onClick={handlePlaceOrder}
+                        className="block w-full max-w-xs mx-auto border border-transparent bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 text-white rounded-md px-5 py-2 font-semibold"
+                      >
                         Place Order
                       </button>
                     </div>
