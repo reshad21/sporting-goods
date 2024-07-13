@@ -2,6 +2,7 @@ import { useDeleteProductMutation } from "@/redux/features/Product/productApi";
 import { GrView } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 import UpdateProductModal from "../product/UpdateProductModal";
 import { Button } from "./button";
 
@@ -21,6 +22,15 @@ const SingleProductRow = (product: TProduct) => {
 
   const [deleteProduct, { isLoading, isError }] = useDeleteProductMutation();
 
+  const handleDeleteProduct = async (id: string) => {
+    try {
+      await deleteProduct(id).unwrap();
+      toast.success("Product deleted successfully!");
+    } catch (error) {
+      toast.error("Failed to delete product.");
+    }
+  };
+
   if (isError) return <div>An error has occurred!</div>;
   if (isLoading) return <div>An error has occurred!</div>;
   return (
@@ -38,7 +48,7 @@ const SingleProductRow = (product: TProduct) => {
       <td className="border-2 border-slate-300 text-center">
         <Button
           className="bg-white hover:text-slate-900"
-          onClick={() => deleteProduct(_id)}
+          onClick={() => handleDeleteProduct(_id)}
         >
           <MdDelete
             size={20}

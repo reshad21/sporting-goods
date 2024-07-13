@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
 import { useState } from "react";
+import { toast } from "sonner";
 const Filter = () => {
   const [category, setCategory] = useState("all");
 
@@ -21,7 +22,11 @@ const Filter = () => {
   } = useGetAllProductsQuery(category === "all" ? "" : category);
 
   if (isError) return <div>An error has occurred!</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    toast(<div className="text-xl font-semibold">Loading...</div>, {
+      duration: 5000,
+    });
+  }
 
   const handleClearFilters = () => {
     setCategory("all");

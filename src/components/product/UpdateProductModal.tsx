@@ -1,6 +1,7 @@
 import { useUpdateProductMutation } from "@/redux/features/Product/productApi";
 import { FormEvent, useState } from "react";
 import { CiEdit } from "react-icons/ci";
+import { toast } from "sonner";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -52,6 +53,7 @@ const UpdateProductModal = ({ product }: { product: TProduct }) => {
       price,
     };
     updateProduct({ id: product._id, data: updatedProductData });
+    toast.success("Product Update successfully...!");
   };
 
   return (

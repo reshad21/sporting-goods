@@ -1,5 +1,6 @@
 import { useAddProductsMutation } from "@/redux/features/Product/productApi";
 import { FormEvent, useState } from "react";
+import { toast } from "sonner";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -50,6 +51,7 @@ const AddProductModal = () => {
       price,
     };
     addProduct(productData);
+    toast.success("Product added successfully...!");
   };
   return (
     <Dialog>
