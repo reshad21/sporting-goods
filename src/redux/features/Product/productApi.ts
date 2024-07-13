@@ -3,15 +3,6 @@ import { baseApi } from "../../api/baseApi";
 const productApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
-        // getAllProducts: builder.query({
-        //     query: () => ({
-        //         url: '/products',
-        //         method: 'GET',
-        //     }),
-        //     providesTags: ['sports']
-        // }),
-
-        //* better filter approch
         getAllProducts: builder.query({
             query: (category) => {
                 const params = new URLSearchParams();
@@ -37,16 +28,15 @@ const productApi = baseApi.injectEndpoints({
         }),
 
         getAllFilterProducts: builder.query({
-            query: ({ category, brand, rating, price }) => {
-                console.log("RTK QUERY =>", category, brand, rating, price);
-
-                // Using URLSearchParams to construct query string
+            query: ({ category, brand, rating, price, searchTerm }) => {
+                console.log("RTK QUERY =>", category, brand, rating, price, searchTerm);
                 const params = new URLSearchParams();
 
                 if (category) params.append('category', category);
                 if (brand) params.append('brand', brand);
                 if (rating !== null && rating !== undefined) params.append('rating', rating.toString());
                 if (price !== null && price !== undefined) params.append('price', price.toString());
+                if (searchTerm) params.append('searchTerm', searchTerm);
 
                 const queryString = params.toString();
                 const url = queryString ? `/products?${queryString}` : '/products';
@@ -58,20 +48,6 @@ const productApi = baseApi.injectEndpoints({
             }
         }),
 
-        searchProducts: builder.query({
-            query: (searchTerm) => {
-                const params = new URLSearchParams();
-                if (searchTerm) {
-                    params.append('searchTerm', searchTerm);
-                }
-                return {
-                    url: `/products/search`,
-                    method: 'GET',
-                    params: params,
-                };
-            },
-            providesTags: ['sports'],
-        }),
 
         addProducts: builder.mutation({
             query: (data) => {
@@ -111,4 +87,4 @@ const productApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useAddProductsMutation, useGetAllProductsQuery, useGetAllFilterProductsQuery, useSearchProductsQuery, useDeleteProductMutation, useUpdateProductMutation, useGetProductByIdQuery, } = productApi;
+export const { useAddProductsMutation, useGetAllProductsQuery, useGetAllFilterProductsQuery, useDeleteProductMutation, useUpdateProductMutation, useGetProductByIdQuery, } = productApi;
