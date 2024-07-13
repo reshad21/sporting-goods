@@ -62,12 +62,6 @@ This project is a comprehensive e-commerce platform focused on sports goods. It 
 - **Consistent Branding**: Sports-related color scheme and branding.
 - **User Experience**: Emphasis on visual appeal and user-friendly interface.
 
-## Bonus Features
-
-- **RTK Query Polling**: Shows the latest products every 30 seconds.
-- **Animations**: Implements animations on the homepage using libraries.
-- **Documentation**: Detailed overview in the README file with significant meaningful commits.
-
 ## Installation
 
 1. Clone the repository:
