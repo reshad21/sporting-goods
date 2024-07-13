@@ -3,6 +3,7 @@ import { clearCart } from "@/redux/features/Cart/CartSlice";
 import { useAppSelector } from "@/redux/hooks";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Checkout = () => {
   const dispatch = useDispatch();
 
   const handlePlaceOrder = () => {
+    toast.success("Order Place Successfully");
     navigate("/");
     dispatch(clearCart());
   };
