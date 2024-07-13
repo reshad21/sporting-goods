@@ -7,7 +7,9 @@ const Footer = () => {
         <footer className="footer py-5 justify-evenly bg-slate-900 text-white">
           <nav>
             <h6 className="footer-title">Services</h6>
-            <a className="link link-hover">Branding</a>
+            <a href="/" className="link link-hover">
+              Home
+            </a>
             <a className="link link-hover">Design</a>
             <a className="link link-hover">Marketing</a>
             <a className="link link-hover">Advertisement</a>

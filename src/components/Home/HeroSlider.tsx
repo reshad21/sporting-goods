@@ -8,8 +8,8 @@ import { Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 import img1 from "../../assets/Images/slider1.jpg";
 import img2 from "../../assets/Images/slider2.jpg";
-import img3 from "../../assets/Images/slider3.jpg";
-import img4 from "../../assets/Images/slider4.jpg";
+import img3 from "../../assets/Images/slider5.jpg";
+import img4 from "../../assets/Images/slider6.jpg";
 
 const HeroSlider = () => {
   return (
@@ -25,16 +25,16 @@ const HeroSlider = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src={img1} className="w-full h-[600px] object-fill" />
+          <img src={img1} className="w-full h-[650px] object-fill" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={img2} className="w-full h-[600px] object-fill" />
+          <img src={img2} className="w-full h-[650px] object-fill" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={img3} className="w-full h-[600px] object-fill" />
+          <img src={img3} className="w-full h-[650px] object-fill" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={img4} className="w-full h-[600px] object-fill" />
+          <img src={img4} className="w-full h-[650px] object-fill" />
         </SwiperSlide>
       </Swiper>
       <motion.div
