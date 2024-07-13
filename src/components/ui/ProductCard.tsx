@@ -46,7 +46,7 @@ const ProductCard = (product: TProductdata) => {
   };
 
   return (
-    <div className="card bg-base-100 w-full shadow-xl">
+    <div className="card bg-base-100 w-full shadow-md border">
       <figure>
         <img
           src={imgurl}
@@ -85,14 +85,14 @@ const ProductCard = (product: TProductdata) => {
         </div>
         <div className="card-actions flex-col w-full">
           <Link to={`/singleProduct/${_id}`} className="w-full">
-            <Button className="btn bg-blue-500 btn-sm w-full">
+            <Button className="btn bg-slate-900 btn-sm w-full">
               View Details
             </Button>
           </Link>
           <Button
             onClick={handleAddToCart}
             disabled={volume <= 0}
-            className="btn bg-orange-500 btn-sm w-full"
+            className="btn bg-[#FFA62F] btn-sm w-full"
           >
             Add To Cart
           </Button>

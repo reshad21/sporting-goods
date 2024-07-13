@@ -15,7 +15,7 @@ const SingleProduct = () => {
   if (isLoading) return <div>An error has occurred!</div>;
   return (
     <Container>
-      <div className="card card-side bg-base-100 shadow-xl my-10">
+      <div className="card card-side bg-base-100 shadow-md border my-10">
         <figure>
           <img
             src={data.imgurl}

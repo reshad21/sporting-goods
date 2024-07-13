@@ -25,7 +25,7 @@ const Topbar = () => {
     <div className="flex flex-col md:flex-row gap-2 w-full">
       {items.map((item) => (
         <Link to={item.link} key={item.pathName}>
-          <Button className="w-full bg-blue-500">{item.pathName}</Button>
+          <Button className="w-full">{item.pathName}</Button>
         </Link>
       ))}
     </div>

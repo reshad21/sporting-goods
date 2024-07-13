@@ -34,7 +34,7 @@ const SearchSection = () => {
           onChange={handleChange} // Call handleChange on input change
         />
         <button
-          className="bg-orange-400 text-white border rounded-md p-3 absolute right-0 top-0 bottom-0"
+          className="bg-orange-500 text-white border rounded-md p-3 absolute right-0 top-0 bottom-0"
           type="submit"
         >
           <IoSearch />

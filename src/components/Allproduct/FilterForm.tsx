@@ -60,7 +60,7 @@ const FilterForm = ({ onChange }: FilterFormProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-blue-500">
+        <Button className="bg-orange-500">
           <span className="mr-2">FILTER</span>
           <GiSettingsKnobs size={15} />
         </Button>

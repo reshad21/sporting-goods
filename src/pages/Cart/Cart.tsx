@@ -13,7 +13,7 @@ const Cart = () => {
         <div className="my-5 h-screen">
           {products?.length > 0 &&
             products.map((product) => (
-              <div className="mb-3 grid grid-cols-3 items-center border-2 border-slate-300 rounded-md p-3">
+              <div className="mb-3 grid grid-cols-3 items-center border shadow-md rounded-md p-3">
                 <h1 className="text-md font-semibold">{product.title}</h1>
                 <div className="flex justify-center items-center gap-3 w-[60%] mx-auto">
                   <button

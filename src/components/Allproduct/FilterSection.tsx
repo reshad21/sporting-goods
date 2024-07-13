@@ -50,12 +50,12 @@ const FilterSection = () => {
 
   return (
     <div className="my-10">
-      <div className="flex justify-end items-center gap-2">
+      <div className="flex flex-col md:flex-row lg:flex-row justify-end items-center gap-2">
         <SearchSection />
-        <Button onClick={handleClearFilters} className="bg-blue-500">
-          CLEAR All FILTERS
-        </Button>
         <FilterForm onChange={handleFiltersChange} />
+        <Button onClick={handleClearFilters} className="bg-slate-900">
+          CLEAR FILTER
+        </Button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 my-5">
         {searchData && searchData.length > 0
