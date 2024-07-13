@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { IoSearch } from "react-icons/io5";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
@@ -16,7 +17,9 @@ const SearchSection = ({ onSearchChange }: any) => {
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search..."
       />
-      <Button onClick={handleSearch}>Search</Button>
+      <Button onClick={handleSearch}>
+        <IoSearch />
+      </Button>
     </div>
   );
 };

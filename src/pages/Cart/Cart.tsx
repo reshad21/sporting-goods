@@ -47,11 +47,17 @@ const Cart = () => {
           {products?.length > 0 ? (
             <div className="mt-10">
               <div className="flex justify-between">
-                <p className="text-md font-semibold text-orange-600">
+                <p className="text-md font-semibold text-blue-600">VAT:</p>
+                <span className="text-slate-600 text-md font-semibold text-end px-1">
+                  15%
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <p className="text-md font-semibold text-blue-600">
                   Total Amount:
                 </p>
                 <span className="text-slate-600 text-md font-semibold text-end px-1">
-                  ${totalPrice}
+                  {totalPrice}$
                 </span>
               </div>
               <div className="w-full bg-blue-700 mt-4 rounded-md">

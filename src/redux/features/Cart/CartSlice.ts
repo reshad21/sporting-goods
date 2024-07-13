@@ -25,6 +25,9 @@ const initialState: CartState = {
     totalPrice: 0,
 };
 
+// VAT rate
+const VAT_RATE = 0.15; // 15%
+
 export const cartSlice = createSlice({
     name: "cart",
     initialState,
@@ -37,12 +40,22 @@ export const cartSlice = createSlice({
                 existingProduct.price += action.payload.price;
                 existingProduct.price = Number(existingProduct.price.toFixed(2));
                 state.totalPrice += action.payload.price;
+
+                // Calculate VAT amount and add to totalPrice
+                const vatAmount = action.payload.price * VAT_RATE;
+                state.totalPrice += vatAmount;
+
                 state.totalPrice = Number(state.totalPrice.toFixed(2));
             } else {
                 state.cart.push({ ...action.payload, amount: 1, quantity: action.payload.quantity - 1 });
                 state.totalPrice += action.payload.price;
+
+                // Calculate VAT amount and add to totalPrice
+                const vatAmount = action.payload.price * VAT_RATE;
+                state.totalPrice += vatAmount;
+
+                state.totalPrice = Number(state.totalPrice.toFixed(2));
             }
-            state.totalPrice = Number(state.totalPrice.toFixed(2));
         },
         increase: (state, action: PayloadAction<{ _id: string }>) => {
             const existingProduct = state.cart.find(product => product._id === action.payload._id);
@@ -74,7 +87,8 @@ export const cartSlice = createSlice({
             }
         },
         clearCart: (state) => {
-            state.cart = []
+            state.cart = [];
+            state.totalPrice = 0;
         }
     },
 });
