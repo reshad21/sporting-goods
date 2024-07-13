@@ -44,6 +44,10 @@ const FilterSection = () => {
   if (isError) return <div>An error has occurred!</div>;
   if (isLoading) return <div>Loading...</div>;
 
+  const noProductsFound =
+    (!searchData || searchData.length === 0) &&
+    (!products?.data || products.data.length === 0);
+
   return (
     <div className="my-10">
       <div className="flex justify-end items-center gap-2">
@@ -62,6 +66,11 @@ const FilterSection = () => {
               <ProductCard {...product} key={product._id} />
             ))}
       </div>
+      {noProductsFound && (
+        <div className="text-center text-xl text-gray-500 mt-5 h-screen">
+          No products found. Please try adjusting your filters.
+        </div>
+      )}
     </div>
   );
 };
