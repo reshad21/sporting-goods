@@ -38,18 +38,21 @@ const productApi = baseApi.injectEndpoints({
 
         getAllFilterProducts: builder.query({
             query: ({ category, brand, rating, price }) => {
-                console.log("RTK QUERY = >", category, brand, rating, price);
+                console.log("RTK QUERY =>", category, brand, rating, price);
 
                 // Using URLSearchParams to construct query string
                 const params = new URLSearchParams();
 
                 if (category) params.append('category', category);
                 if (brand) params.append('brand', brand);
-                if (rating !== null) params.append('rating', rating.toString());
-                if (price !== null) params.append('price', price.toString());
+                if (rating !== null && rating !== undefined) params.append('rating', rating.toString());
+                if (price !== null && price !== undefined) params.append('price', price.toString());
+
+                const queryString = params.toString();
+                const url = queryString ? `/products?${queryString}` : '/products';
 
                 return {
-                    url: `/products?${params.toString()}`,
+                    url: url,
                     method: 'GET'
                 };
             }
