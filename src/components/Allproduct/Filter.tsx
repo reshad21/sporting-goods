@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
 import { useState } from "react";
-import { toast } from "sonner";
+import Spinner from "../ui/Spinner";
 const Filter = () => {
   const [category, setCategory] = useState("all");
 
@@ -22,11 +22,7 @@ const Filter = () => {
   } = useGetAllProductsQuery(category === "all" ? "" : category);
 
   if (isError) return <div>An error has occurred!</div>;
-  if (isLoading) {
-    toast(<div className="text-xl font-semibold">Loading...</div>, {
-      duration: 5000,
-    });
-  }
+  if (isLoading) return <Spinner />;
 
   const handleClearFilters = () => {
     setCategory("all");
@@ -47,14 +43,14 @@ const Filter = () => {
             <SelectGroup>
               <SelectLabel>Category</SelectLabel>
               <SelectItem value="all">Set Category</SelectItem>
+              <SelectItem value="cricket">Cricket</SelectItem>
               <SelectItem value="basketball">Basketball</SelectItem>
               <SelectItem value="soccer">Soccer</SelectItem>
-              <SelectItem value="cricket">Cricket</SelectItem>
-              <SelectItem value="tennis">Tennis</SelectItem>
+              {/* <SelectItem value="tennis">Tennis</SelectItem>
               <SelectItem value="baseball">Baseball</SelectItem>
               <SelectItem value="golf">Golf</SelectItem>
               <SelectItem value="running">Running</SelectItem>
-              <SelectItem value="swimming">Swimming</SelectItem>
+              <SelectItem value="swimming">Swimming</SelectItem> */}
             </SelectGroup>
           </SelectContent>
         </Select>

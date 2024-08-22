@@ -18,7 +18,6 @@ const productApi = baseApi.injectEndpoints({
             providesTags: ['sports']
         }),
 
-
         getProductById: builder.query({
             query: (id) => ({
                 url: `/product/${id}`,
@@ -28,8 +27,8 @@ const productApi = baseApi.injectEndpoints({
         }),
 
         getAllFilterProducts: builder.query({
-            query: ({ category, brand, rating, price, searchTerm }) => {
-                console.log("RTK QUERY =>", category, brand, rating, price, searchTerm);
+            query: ({ category, brand, rating, price, searchTerm, sort }) => {  // Added sort parameter
+                console.log("RTK QUERY =>", category, brand, rating, price, searchTerm, sort);
                 const params = new URLSearchParams();
 
                 if (category) params.append('category', category);
@@ -37,6 +36,7 @@ const productApi = baseApi.injectEndpoints({
                 if (rating !== null && rating !== undefined) params.append('rating', rating.toString());
                 if (price !== null && price !== undefined) params.append('price', price.toString());
                 if (searchTerm) params.append('searchTerm', searchTerm);
+                if (sort) params.append('sort', sort);  // Append the sort parameter
 
                 const queryString = params.toString();
                 const url = queryString ? `/products?${queryString}` : '/products';
@@ -47,7 +47,6 @@ const productApi = baseApi.injectEndpoints({
                 };
             }
         }),
-
 
         addProducts: builder.mutation({
             query: (data) => {
@@ -87,4 +86,11 @@ const productApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useAddProductsMutation, useGetAllProductsQuery, useGetAllFilterProductsQuery, useDeleteProductMutation, useUpdateProductMutation, useGetProductByIdQuery, } = productApi;
+export const {
+    useAddProductsMutation,
+    useGetAllProductsQuery,
+    useGetAllFilterProductsQuery,
+    useDeleteProductMutation,
+    useUpdateProductMutation,
+    useGetProductByIdQuery
+} = productApi;

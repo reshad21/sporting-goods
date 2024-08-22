@@ -56,7 +56,7 @@ const AddProductModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-blue-500">Add Product</Button>
+        <Button className="bg-slate-900">Add New Product</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -112,14 +112,9 @@ const AddProductModal = () => {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Category</SelectLabel>
+                    <SelectItem value="cricket">Cricket</SelectItem>
                     <SelectItem value="basketball">Basketball</SelectItem>
                     <SelectItem value="soccer">Soccer</SelectItem>
-                    <SelectItem value="cycling">Cricket</SelectItem>
-                    <SelectItem value="tennis">Tennis</SelectItem>
-                    <SelectItem value="baseball">Baseball</SelectItem>
-                    <SelectItem value="golf">Golf</SelectItem>
-                    <SelectItem value="running">Running</SelectItem>
-                    <SelectItem value="swimming">Swimming</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>

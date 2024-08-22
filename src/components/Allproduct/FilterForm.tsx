@@ -23,6 +23,7 @@ import {
 
 type TFilters = {
   category: string;
+  sort: string;
   brand: string;
   rating: number | null;
   price: number | null;
@@ -34,6 +35,7 @@ type FilterFormProps = {
 
 const FilterForm = ({ onChange }: FilterFormProps) => {
   const [category, setCategory] = useState<string>("");
+  const [sort, setSort] = useState<string>("");
   const [brand, setBrand] = useState<string>("");
   const [rating, setRating] = useState<number | null>(null);
   const [price, setPrice] = useState<number | null>(null);
@@ -42,6 +44,7 @@ const FilterForm = ({ onChange }: FilterFormProps) => {
     e.preventDefault();
     const filterOption: TFilters = {
       category,
+      sort,
       brand,
       rating,
       price,
@@ -52,6 +55,7 @@ const FilterForm = ({ onChange }: FilterFormProps) => {
 
   const resetForm = () => {
     setCategory("");
+    setSort(""); // Reset sort state
     setBrand("");
     setRating(null);
     setPrice(null);
@@ -82,14 +86,27 @@ const FilterForm = ({ onChange }: FilterFormProps) => {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Category</SelectLabel>
+                    <SelectItem value="cricket">Cricket</SelectItem>
                     <SelectItem value="basketball">Basketball</SelectItem>
                     <SelectItem value="soccer">Soccer</SelectItem>
-                    <SelectItem value="cricket">Cricket</SelectItem>
-                    <SelectItem value="tennis">Tennis</SelectItem>
-                    <SelectItem value="baseball">Baseball</SelectItem>
-                    <SelectItem value="golf">Golf</SelectItem>
-                    <SelectItem value="running">Running</SelectItem>
-                    <SelectItem value="swimming">Swimming</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="sort" className="">
+                Sorting
+              </Label>
+              <Select onValueChange={(value) => setSort(value)}>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Sort By Price" />{" "}
+                  {/* Updated placeholder */}
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Sort By Price</SelectLabel>
+                    <SelectItem value="low-to-high">Low to High</SelectItem>
+                    <SelectItem value="high-to-low">High to Low</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>

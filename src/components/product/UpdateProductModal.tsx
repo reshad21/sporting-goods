@@ -59,7 +59,7 @@ const UpdateProductModal = ({ product }: { product: TProduct }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-white hover:text-slate-900">
+        <Button className="bg-white ">
           <CiEdit
             size={20}
             className="font-bold text-slate-900 hover:text-white"
@@ -125,14 +125,9 @@ const UpdateProductModal = ({ product }: { product: TProduct }) => {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Category</SelectLabel>
+                    <SelectItem value="cricket">Cricket</SelectItem>
                     <SelectItem value="basketball">Basketball</SelectItem>
                     <SelectItem value="soccer">Soccer</SelectItem>
-                    <SelectItem value="cycling">Cricket</SelectItem>
-                    <SelectItem value="tennis">Tennis</SelectItem>
-                    <SelectItem value="baseball">Baseball</SelectItem>
-                    <SelectItem value="golf">Golf</SelectItem>
-                    <SelectItem value="running">Running</SelectItem>
-                    <SelectItem value="swimming">Swimming</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>

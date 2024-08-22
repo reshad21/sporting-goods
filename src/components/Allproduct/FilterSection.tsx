@@ -2,9 +2,11 @@ import { useGetAllFilterProductsQuery } from "@/redux/features/Product/productAp
 import { removeSearch } from "@/redux/features/Product/ProductSlice";
 import { useAppSelector } from "@/redux/hooks";
 import { useState } from "react";
+import "react-loading-skeleton/dist/skeleton.css";
 import { useDispatch } from "react-redux";
 import { Button } from "../ui/button";
 import ProductCard, { TProductdata } from "../ui/ProductCard";
+import Spinner from "../ui/Spinner";
 import FilterForm from "./FilterForm";
 import SearchSection from "./SearchSection";
 
@@ -14,11 +16,12 @@ export type TFilters = {
   rating: number | null;
   price: number | null;
   searchTerm?: string;
+  sort?: string; // Added sort field
 };
 
 const FilterSection = () => {
   const searchData = useAppSelector((state) => state.product.products);
-  const dispatch = useDispatch(); // Corrected typo: useDispatch
+  const dispatch = useDispatch();
 
   const [filters, setFilters] = useState<TFilters>({
     category: "",
@@ -26,6 +29,7 @@ const FilterSection = () => {
     rating: null,
     price: null,
     searchTerm: "",
+    sort: "", // Initialize sort state
   });
 
   const {
@@ -49,12 +53,13 @@ const FilterSection = () => {
       rating: null,
       price: null,
       searchTerm: "",
+      sort: "", // Clear sort filter
     });
     dispatch(removeSearch());
   };
 
   if (isError) return <div>An error has occurred!</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Spinner />;
 
   const noProductsFound =
     (!searchData || searchData.length === 0) &&

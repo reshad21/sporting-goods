@@ -11,12 +11,13 @@ export type TProduct = {
   title?: string;
   price?: number;
   imgurl?: string;
-  rating?: number; // Optional properties
-  quantity?: number; // Optional properties
-  brand?: string; // Optional properties
-  category?: string; // Optional properties
-  description?: string; // Optional properties
+  rating?: number;
+  quantity?: number;
+  brand?: string;
+  category?: string;
+  description?: string;
 };
+
 const SingleProductRow = (product: TProduct) => {
   const { _id, title, price, imgurl } = product;
 
@@ -31,38 +32,42 @@ const SingleProductRow = (product: TProduct) => {
     }
   };
 
-  if (isError) return <div>An error has occurred!</div>;
-  if (isLoading) return <div>An error has occurred!</div>;
+  if (isError)
+    return <div className="text-red-500">An error has occurred!</div>;
+  if (isLoading) return <div className="text-blue-500">Loading...</div>;
+
   return (
-    <tr>
-      <td className="border-2 border-slate-300 px-3">
-        <div className="flex items-center gap-2">
-          <img src={imgurl} alt="" className="size-4" />
-          <h1 className="font-semibold">{title}</h1>
+    <tr className=" hover:bg-gray-100 transition">
+      <td className="px-4 py-3">
+        <div className="flex items-center gap-4">
+          <img
+            src={imgurl}
+            alt={title}
+            className="size-8 object-cover rounded-lg shadow-md"
+          />
+          <div>
+            <h1 className="text-lg font-semibold text-gray-800">{title}</h1>
+          </div>
         </div>
       </td>
-      <td className="border-2 border-slate-300 px-3 font-semibold">{price}$</td>
-      <td className="border-2 border-slate-300 text-center">
+      <td className="px-4 py-3 font-semibold text-gray-700 text-center">
+        {price}$
+      </td>
+      <td className="px-3 py-3 text-center">
         <UpdateProductModal product={product} />
       </td>
-      <td className="border-2 border-slate-300 text-center">
+      <td className="px-3 py-3 text-center">
         <Button
-          className="bg-white hover:text-slate-900"
+          className="bg-red-500 text-white hover:bg-red-600 transition rounded-full p-2"
           onClick={() => handleDeleteProduct(_id)}
         >
-          <MdDelete
-            size={20}
-            className="font-bold text-slate-900 hover:text-white"
-          />
+          <MdDelete size={20} className="text-white" />
         </Button>
       </td>
-      <td className="border-2 border-slate-300 text-center">
-        <Link to={`/singleProduct/${_id}`} className="">
-          <Button className="bg-white hover:text-slate-900">
-            <GrView
-              size={20}
-              className="font-bold text-slate-900 hover:text-white"
-            />
+      <td className="px-3 py-3 text-center">
+        <Link to={`/singleProduct/${_id}`}>
+          <Button className="bg-blue-500 text-white hover:bg-blue-600 transition rounded-full p-2">
+            <GrView size={20} className="text-white" />
           </Button>
         </Link>
       </td>

@@ -61,7 +61,7 @@ const Navber = () => {
             {cart.length > 0 && (
               <Badge
                 variant="destructive"
-                className="absolute rounded-full size-6 bottom-3 left-3"
+                className="absolute rounded-full size-6 bottom-3 left-3 flex justify-center items-center"
               >
                 {cart.length}
               </Badge>
