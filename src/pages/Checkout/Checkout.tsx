@@ -150,7 +150,7 @@ const Checkout = () => {
                         >
                           <input
                             type="radio"
-                            className="form-radio h-5 w-5 text-indigo-500"
+                            className="form-radio h-5 w-5 text-[#2FB390]"
                             name="type"
                             id="type2"
                           />
@@ -162,7 +162,7 @@ const Checkout = () => {
                         >
                           <input
                             type="radio"
-                            className="form-radio h-5 w-5 text-indigo-500"
+                            className="form-radio h-5 w-5 text-[#2FB390]"
                             name="type"
                             id="type2"
                           />
@@ -173,7 +173,7 @@ const Checkout = () => {
                     <div className="text-right">
                       <button
                         onClick={handlePlaceOrder}
-                        className="block w-full max-w-xs mx-auto border border-transparent bg-blue-600 hover:bg-blue-700 focus:bg-blue-600 text-white rounded-md px-5 py-2 font-semibold"
+                        className="block w-full max-w-xs mx-auto border border-transparent bg-[#e21b70] hover:bg-[#e21b70] focus:bg-[#e21b70] text-white rounded-md px-5 py-2 font-semibold"
                       >
                         Place Order
                       </button>

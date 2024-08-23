@@ -58,7 +58,7 @@ const FilterSection = () => {
     dispatch(removeSearch());
   };
 
-  if (isError) return <div>An error has occurred!</div>;
+  if (isError) return <Spinner />;
   if (isLoading) return <Spinner />;
 
   const noProductsFound =

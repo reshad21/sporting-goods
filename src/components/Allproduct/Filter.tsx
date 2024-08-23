@@ -21,7 +21,7 @@ const Filter = () => {
     isError,
   } = useGetAllProductsQuery(category === "all" ? "" : category);
 
-  if (isError) return <div>An error has occurred!</div>;
+  if (isError) return <Spinner />;
   if (isLoading) return <Spinner />;
 
   const handleClearFilters = () => {
@@ -31,12 +31,12 @@ const Filter = () => {
     <div className="my-10">
       <div className="flex justify-end items-end gap-2">
         <div>
-          <Button onClick={handleClearFilters} className="bg-blue-500">
+          <Button onClick={handleClearFilters} className="">
             Clear all Filter
           </Button>
         </div>
         <Select value={category} onValueChange={(value) => setCategory(value)}>
-          <SelectTrigger className="w-[150px] bg-blue-500 text-white outline-0">
+          <SelectTrigger className="w-[150px] bg-[#e21b70] text-white outline-0">
             <SelectValue placeholder="Set Category" />
           </SelectTrigger>
           <SelectContent>

@@ -58,7 +58,7 @@ const SingleProductRow = (product: TProduct) => {
       </td>
       <td className="px-3 py-3 text-center">
         <Button
-          className="bg-red-500 text-white hover:bg-red-600 transition rounded-full p-2"
+          className="bg-[#e21b70] text-white hover:bg-red-600 transition rounded-full p-2"
           onClick={() => handleDeleteProduct(_id)}
         >
           <MdDelete size={20} className="text-white" />
@@ -66,7 +66,7 @@ const SingleProductRow = (product: TProduct) => {
       </td>
       <td className="px-3 py-3 text-center">
         <Link to={`/singleProduct/${_id}`}>
-          <Button className="bg-blue-500 text-white hover:bg-blue-600 transition rounded-full p-2">
+          <Button className="bg-[#2FB390] text-white hover:bg-[#2FB390] transition rounded-full p-2">
             <GrView size={20} className="text-white" />
           </Button>
         </Link>

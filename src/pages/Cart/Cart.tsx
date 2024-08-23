@@ -60,7 +60,7 @@ const Cart = () => {
                   {totalPrice}$
                 </span>
               </div>
-              <div className="w-full bg-blue-600 mt-4 rounded-md">
+              <div className="w-full bg-[#e21b70] mt-4 rounded-md">
                 <Link
                   to="/checkout"
                   className="w-full block p-2 text-white font-semibold text-center"

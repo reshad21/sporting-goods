@@ -15,7 +15,7 @@ const ManageProduct = () => {
     pollingInterval: 30000, // Poll every 30 seconds
   });
 
-  if (isError) return <div>An error has occurred!</div>;
+  if (isError) return <Spinner />;
   if (isLoading) return <Spinner />;
 
   return (
