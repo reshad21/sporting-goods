@@ -46,7 +46,7 @@ const ProductCard = (product: TProductdata) => {
   };
 
   return (
-    <div className="card bg-base-200 w-full shadow-md border">
+    <div className="card bg-gray-200 w-full shadow-md border">
       <figure>
         <img
           src={imgurl}

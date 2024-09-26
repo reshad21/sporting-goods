@@ -8,8 +8,8 @@ import { Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 import img1 from "../../assets/Images/slider1.jpg";
 import img2 from "../../assets/Images/slider2.jpg";
-import img3 from "../../assets/Images/slider5.jpg";
-import img4 from "../../assets/Images/slider6.jpg";
+import img3 from "../../assets/Images/slider3.jpg";
+import img4 from "../../assets/Images/slider4.jpg";
 
 const HeroSlider = () => {
   return (

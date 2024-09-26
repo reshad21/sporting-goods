@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <>
       <>
-        <footer className="footer py-5 justify-between px-16 py-4 bg-slate-900 text-white">
+        <footer className="footer justify-between px-4 lg:px-16 py-4 bg-slate-100 text-slate-900">
           <nav>
             <h6 className="footer-title">My Company</h6>
             <div className="flex flex-col">

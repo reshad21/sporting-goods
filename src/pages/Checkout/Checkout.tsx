@@ -20,7 +20,7 @@ const Checkout = () => {
   return (
     <div>
       <Container>
-        <div className="bg-gray-50 py-5 my-5">
+        <div className="py-5 my-5">
           <div className="max-w-container mx-auto ">
             <div className="px-5">
               <div className="mb-2">
@@ -37,10 +37,10 @@ const Checkout = () => {
                 </h1>
               </div>
             </div>
-            <div className="w-full bg-white border-t border-b border-gray-200 px-5 py-10 text-gray-800">
+            <div className="w-full px-5 py-10 text-gray-800">
               <div className="w-full">
                 <div className="-mx-3 md:flex items-start">
-                  <div className="px-3 md:w-7/12 lg:pr-10 border border-gray-200 rounded-lg shadow-md">
+                  <div className="px-3 md:w-7/12 mb-3 lg:mb-0 lg:pr-10 border border-gray-200 rounded-lg shadow-md">
                     {checkProduct.length > 0 &&
                       checkProduct.map((product) => {
                         return (
@@ -90,7 +90,7 @@ const Checkout = () => {
                     </div>
                   </div>
                   <div className="px-3 md:w-5/12">
-                    <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6 shadow-md">
+                    <div className="w-full mx-auto rounded-lg border border-gray-200 text-gray-800 font-light mb-6 shadow-md">
                       <div className="w-full p-3 border-b border-gray-200">
                         <div>
                           <div className="mb-3">
