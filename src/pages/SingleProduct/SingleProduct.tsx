@@ -16,13 +16,13 @@ const SingleProduct = () => {
   if (isLoading) return <Spinner />;
   return (
     <Container>
-      <div className="min-h-screen">
-        <div className="card card-side bg-base-100 shadow-md border my-10 p-6">
+      <div className="min-h-screen mx-auto">
+        <div className="flex flex-col lg:flex-row justify-center items-center bg-base-100 shadow-md border my-10 p-6">
           <figure>
             <img
               src={data.imgurl}
               alt="Movie"
-              className="w-[400px] h-[400px] object-fill"
+              className="size-72 object-fill"
             />
           </figure>
           <div className="card-body">

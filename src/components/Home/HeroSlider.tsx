@@ -38,7 +38,7 @@ const HeroSlider = () => {
         </SwiperSlide>
       </Swiper>
       <motion.div
-        className="absolute flex flex-col gap-3 justify-center top-[50%]  left-[20%] md:left[50%] lg:left[50%] z-40 bg-orange-500 text-white text-center w-[55%] h-[45%] md:w-[35%] md:h-[25%] border-2 border-white rounded-lg"
+        className="absolute flex flex-col gap-3 justify-center top-[50%]  left-[20%] md:left[50%] lg:left[50%] z-40 bg-pink-600 text-white text-center w-[55%] h-[45%] md:w-[35%] md:h-[25%] border-2 border-white rounded-lg"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1.1 }}
         transition={{
@@ -49,8 +49,12 @@ const HeroSlider = () => {
           duration: 2,
         }}
       >
-        <h1 className="text-3xl font-bold">MEGA OFFER FOR NEXT 30 DAYS</h1>
-        <p className="text-xl font-semibold">50% CASH BACK OFFER</p>
+        <h1 className="text-3xl font-bold">
+          MEGA OFFER FOR NEXT <span className="text-yellow-300">30 DAYS</span>
+        </h1>
+        <p className="text-xl font-semibold">
+          <span className="text-yellow-300">50%</span> CASH BACK OFFER
+        </p>
       </motion.div>
     </div>
   );

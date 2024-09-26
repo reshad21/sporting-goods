@@ -21,7 +21,7 @@ const ContactSection = () => {
             className="mt-10 md:mt-0"
           >
             <h1 className="text-3xl font-bold mb-4">
-              Get In <span className="text-orange-400">Touch</span>
+              Get In <span className="text-[#e21b70]">Touch</span>
             </h1>
             <div className="flex items-center gap-3 mb-4">
               <div className="flex items-center gap-1">

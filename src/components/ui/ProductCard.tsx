@@ -51,7 +51,7 @@ const ProductCard = (product: TProductdata) => {
         <img
           src={imgurl}
           alt="Product Image"
-          className="size-40 object-cover"
+          className="size-72 p-4 object-cover"
         />
       </figure>
       <div className="card-body">
@@ -92,7 +92,7 @@ const ProductCard = (product: TProductdata) => {
           <Button
             onClick={handleAddToCart}
             disabled={volume <= 0}
-            className="btn bg-[#FFA62F] btn-sm w-full"
+            className="btn bg-[#e21b70] btn-sm w-full"
           >
             Add To Cart
           </Button>

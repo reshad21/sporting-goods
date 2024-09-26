@@ -62,7 +62,7 @@ const ContactUsForm = () => {
           </label>
         </div>
         <div className="">
-          <button className="bg-[#FFA62F] text-white font-semibold py-3 px-4 rounded-md">
+          <button className="bg-[#e21b70] text-white font-semibold py-3 px-4 rounded-md">
             SEND MESSAGE
           </button>
         </div>
