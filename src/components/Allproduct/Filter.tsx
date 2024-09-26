@@ -12,6 +12,7 @@ import {
 import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
 import { useState } from "react";
 import Spinner from "../ui/Spinner";
+
 const Filter = () => {
   const [category, setCategory] = useState("all");
 
@@ -46,16 +47,11 @@ const Filter = () => {
               <SelectItem value="cricket">Cricket</SelectItem>
               <SelectItem value="basketball">Basketball</SelectItem>
               <SelectItem value="soccer">Soccer</SelectItem>
-              {/* <SelectItem value="tennis">Tennis</SelectItem>
-              <SelectItem value="baseball">Baseball</SelectItem>
-              <SelectItem value="golf">Golf</SelectItem>
-              <SelectItem value="running">Running</SelectItem>
-              <SelectItem value="swimming">Swimming</SelectItem> */}
             </SelectGroup>
           </SelectContent>
         </Select>
       </div>
-      <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 my-5">
+      <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-5">
         {products?.data?.map((product: TProductdata) => (
           <ProductCard {...product} key={product._id} />
         ))}

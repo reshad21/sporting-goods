@@ -4,13 +4,20 @@ const Footer = () => {
   return (
     <>
       <>
-        <footer className="footer py-5 justify-evenly bg-slate-900 text-white">
+        <footer className="footer py-5 justify-between px-16 py-4 bg-slate-900 text-white">
+          <nav>
+            <h6 className="footer-title">My Company</h6>
+            <div className="flex flex-col">
+              <span>123 Street Name, City, State 12345</span>{" "}
+              <span>Email: contact@yourcompany.com</span>
+              <span>Phone: (123) 456-7890</span>
+            </div>
+          </nav>
           <nav>
             <h6 className="footer-title">Services</h6>
             <a href="/" className="link link-hover">
               Home
             </a>
-            <a className="link link-hover">Design</a>
             <a className="link link-hover">Marketing</a>
             <a className="link link-hover">Advertisement</a>
           </nav>

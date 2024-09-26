@@ -74,7 +74,7 @@ const FilterSection = () => {
           CLEAR FILTER
         </Button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 my-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-5">
         {searchData && searchData.length > 0
           ? searchData.map((product: TProductdata) => (
               <ProductCard {...product} key={product?._id} />
